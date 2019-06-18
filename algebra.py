@@ -2,21 +2,24 @@ __brkts__ = (('[', ']'),
              ('{', '}'),
              ('(', ')'))
 def msum( ex: str):
-        opts = []
-        optr = []
-        c = ''
-        for i in ex:
-            if i == '+' or i == '-':
-                opts.append(c)
-                optr.append(i)
-                c = ''
-            else: c+=i
-        else: opts.append(c)
-        dtor = ''
-        for i in opts:
-            dtor += i[i.find('/')+1:]
-        return dtor
-
+    opts = []
+    optr = []
+    c = ''
+    for i in ex:
+        if i == '+' or i == '-':
+            opts.append(c)
+            optr.append(i)
+            c = ''
+        else: c+=i
+    else: opts.append(c)
+    dtor, ntor = '', ''
+    for i in opts:
+        dtor += i[i.find('/')+1:]
+    for j, i in enumerate(opts):
+        if j < len(optr):
+            ntor += opts[j][:opts[j].index('/')] + div(dtor+'/'+i[i.index('/')+1:])+optr[j]
+    else: ntor += opts[j][:opts[j].index('/')] + div(dtor+'/'+i[i.index('/')+1:])
+    return cmn(ntor)+'/'+cmn(dtor)
 
 
 def __cmn__(ex : str):
