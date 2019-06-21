@@ -22,7 +22,7 @@ def msum( ex: str):
     return cmn(ntor)+'/'+cmn(dtor)
 
 
-def __cmn__(ex : str):
+def cmn(ex : str):
     if '+' in ex or '-' in ex:
         opts = []
         optr = []
@@ -63,9 +63,9 @@ def __cmn__(ex : str):
     else:
         return ex
 
-def __div__(itm: str):
+def div(itm: str):
     if '/' in itm:
-        l1, c = list(__cmn__(itm.split('/')[0])), list(__cmn__(itm.split('/')[0]))
+        l1, c = list(cmn(itm.split('/')[0])), list(cmn(itm.split('/')[0]))
         l2 = list(itm.split('/')[1])
         if '(' in l1 and ')' in l1: del l1[l1.index('('):l1.index(')')+1]
         if '(' in l2 and ')' in l2: del l2[l2.index('('):l2.index(')')+1]
@@ -92,4 +92,4 @@ def __div__(itm: str):
 
 
 #For testing:
-#print(__div__('has/as'))
+#print(div('has/as'))
