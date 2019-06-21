@@ -90,4 +90,6 @@ def __div__(itm: str):
     else:
         return itm
 
-print(__div__('has/as'))
+
+#For testing:
+#print(__div__('has/as'))
