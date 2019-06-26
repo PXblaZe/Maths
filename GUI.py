@@ -64,7 +64,30 @@ def _txtbox(stdscr, y, xl, wl = 20, xpndx = False):
 
     else:
         # wait for update...
-        pass
+        textpad.rectangle(stdscr, y, xl, y+2, wl)
+        stdscr.addstr(y+1, xl+1, '')
+        i = xl+1
+        while True:
+            if i == wl:
+                textpad.rectangle(stdscr, y, xl, y+2, wl+i-xl)
+                stdscr.addstr(y+1, i+1, '')
+            k = stdscr.getch()
+            if k == KEY_ENTER or k in [10, 13]:
+                break
+            elif k == KEY_BACKSPACE:
+                if i>xl+1:
+                    stdscr.addstr(y+1, i-1, ' ')
+                    stdscr.addstr(y+1, xl+1, istr[:-1])
+                    istr = istr[:-1]
+                    i-=1
+                    stdscr.refresh()
+            else:
+                if i<wl-1:
+                    stdscr.addstr(y+1, i, str(chr(k)))
+                    istr+=str(chr(k))
+                    stdscr.refresh()
+                    i+=1
+            
 
 
     _istr.append(istr)
