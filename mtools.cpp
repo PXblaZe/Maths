@@ -280,12 +280,18 @@ class Polynomial {
         this->degree = poly.degree;
     }
 
-    Polynomial(const std::string symbol, const size_t degree)
-    : symbol(symbol), degree(degree), consts(degree+1, 0) {}
+    Polynomial(const std::string& symbol, const size_t& degree)
+    : consts(degree+1, 0) {
+        this->symbol = symbol;
+        this->degree = degree;
+    }
 
     template<typename... Type>
-    Polynomial(const std::string symbol, Type... args)
-    : symbol(symbol), consts{args...}, degree(this->consts.size()-1) {}
+    Polynomial(const std::string& symbol, Type... args)
+    : consts{args...} {
+        this->symbol = symbol;
+        this->degree = this->consts.size()-1;
+    }
 
     double operator()(const double value) const {
         double res = 0;
@@ -295,7 +301,7 @@ class Polynomial {
     }
 
 
-    const Polynomial& operator+(const double& value) const {
+    Polynomial& operator+(const double& value) {
         Polynomial* p = new Polynomial(*this);
         p->consts[p->degree] += value; 
         return *p;
@@ -488,65 +494,25 @@ using namespace std;
 
 signed main() {
 
-    Polynomial a("x", 1, 2, 3);
-    Polynomial b("x", 1, 1, 1);
+    int n, m;
+    cout << "Enter the degree of 1st polynomial: ";
+    cin >> n;
+    cout << "Enter the coefficients of the polynomial: ";
+    Polynomial a("x", (size_t)n);
+    cin >> a;
+    cout << "Enter the degree of 2nd polynomial: ";
+    cin >> m;
+    cout << "Enter the coefficients of the polynomial: ";
+    Polynomial b("x", (size_t)m);
+    cin >> b;
 
-    Polynomial c = a*b;
+    cout << "First polynomial:  " << a << '\n';
+    cout << "Second polynomial: " << b << '\n';
 
-    cout << '\n';
-    cout << a;
-    cout << '\n';
-    cout << b;
-    cout << '\n';
-    cout << c;
-    cout << '\n';
+    Polynomial ad = a+b, sb = a-b, ml = a*b;
 
-    a *= b;
-
-    cout << a << '\n';
-
-    // for(double& x: c) cout << a;
-
-    // Matrix<double> af = {{1, 2}, {3, 4}};
-    // Matrix<double> bf = {{1}, {2}};
-    // Matrix<double> cf = af*bf;
-
-    // cf.display();
-    
-    // vector<double> a = {1, 2, 3, 4, 5};
-
-    // Polynomial p("x", a.begin(), a.end());
-
-    // Polynomial x("x", 1, 2, 4, 56, 23, 4, .232);
-
-    // Polynomial c("x", 1, 1, 1, 1, 1);
-
-    // int n = 20;
-
-    // Polynomial y = p + n;
-
-    // cout << y;
-
-    // cout << '\n' << y.degree << '\n' << y(.56) << '\n';
-
-    // // y = y + x;
-    // // y += x;
-    // y = y * c;
-    
-    // cout << y;
-
-    // cout << '\n' << y.degree << '\n' << y(.56) << "\n\n";
-
-    // vector<complex<double>> f = y.fft(y.consts);
-
-    // for(auto z: f) cout << z << "  ";
-
-    // cout << endl;
-
-    // f = y.ifft(f);
-
-    // for(auto z: f) cout << sqrt(pow(z.real(), 2) - pow(z.imag(), 2)) << "  ";
-
-    // cout << endl;
+    cout << "Addition: " << ad << '\n';
+    cout << "Substraction: " << sb << '\n';
+    cout << "Multiplication: " << ml << '\n';
 
 }
