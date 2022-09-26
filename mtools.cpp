@@ -1,3 +1,4 @@
+#include <limits>
 #include <vector>
 #include <math.h>
 #include <string>
@@ -118,12 +119,14 @@ template<typename Type> class Matrix {
     }
 
     Matrix<Type>& operator/(Matrix<Type>& matrix) {
-        assert(matrix.rows==this->rows && matrix.columns==this->columns);
-        for(size_t i=0; i<this->rows; i++) {
-            for(size_t j=0; j<this->columns; j++) 
-                this->_matrix[i][j] /= matrix[i][j];
-        }
-        return *this;
+        assert(matrix.rows==this->rows 
+            && matrix.columns==this->columns 
+            && matrix.rows==matrix==columns
+        );
+        Matrix<Type> m = matrix, r;
+        m.inverse();
+        r = (*this) * m;
+        return r;
     }
 
     void transpose() {
@@ -180,69 +183,60 @@ template<typename Type> class Matrix {
 
         assert(this->rows == this->columns);
 
-        for (int i=0; i<this->rows; i++) {
-            // Search for maximum in this column
+        for (size_t i=0; i<this->rows; i++) {
             double maxEl = abs(this->_matrix[i][i]);
             int maxRow = i;
-            for (int k=i+1; k<this->rows; k++) {
+            for (size_t k=i+1; k<this->rows; k++) {
                 if (abs(this->_matrix[k][i]) > maxEl) {
                     maxEl = this->_matrix[k][i];
                     maxRow = k;
                 }
             }
 
-            // Swap maximum row with current row (column by column)
-            for (int k=i; k<2*this->rows;k++) {
+            for (size_t k=i; k<2*this->rows;k++) {
                 double tmp = this->_matrix[maxRow][k];
                 this->_matrix[maxRow][k] = this->_matrix[i][k];
                 this->_matrix[i][k] = tmp;
             }
 
-            // Make all rows below this one 0 in current column
-            for (int k=i+1; k<this->rows; k++) {
+            for (size_t k=i+1; k<this->rows; k++) {
                 double c = -this->_matrix[k][i]/this->_matrix[i][i];
-                for (int j=i; j<2*this->rows; j++) {
-                    if (i==j) {
-                        this->_matrix[k][j] = 0;
-                    } else {
-                        this->_matrix[k][j] += c * this->_matrix[i][j];
-                    }
+                for (size_t j=i; j<2*this->rows; j++) {
+                    if (i==j) this->_matrix[k][j] = 0;
+                    else this->_matrix[k][j] += c * this->_matrix[i][j];
                 }
             }
         }
 
-        // Solve equation Ax=b for an upper triangular matrix A
-        for (int i=this->rows-1; i>=0; i--) {
-            for (int k=this->rows; k<2*this->rows;k++) {
+        for (size_t i=this->rows-1; i>=0; i--) {
+            for (size_t k=this->rows; k<2*this->rows; k++) {
                 this->_matrix[i][k] /= this->_matrix[i][i];
             }
-            // this is not necessary, but the output looks nicer:
             this->_matrix[i][i] = 1;
 
-            for (int rowModify=i-1;rowModify>=0; rowModify--) {
-                for (int columModify=this->rows;columModify<2*this->rows;columModify++) {
+            for (size_t rowModify=i-1; rowModify>=0; rowModify--) {
+                for (size_t columModify=this->rows; columModify<2*this->rows; columModify++) {
                     this->_matrix[rowModify][columModify] -= this->_matrix[i][columModify]
-                                                * this->_matrix[rowModify][i];
+                                                            * this->_matrix[rowModify][i];
                 }
-                // this is not necessary, but the output looks nicer:
                 this->_matrix[rowModify][i] = 0;
             }
         }
     }
 
-    void cinput() {
-        for(auto& row: this->_matrix) {
-            for(Type& column: row) std::cin >> column;
-        }
+    friend std::istream& operator>>(std::istream& is, const Matrix<Type>& matrix) {
+        for(auto& rows: matrix._matrix) for(Type& column: rows) is >> column;
+        return is;
     }
 
-    void display() const {
-        for(size_t i=0; i<this->rows; i++) {
-            std::cout << '[';
-            for(size_t j=0; j<this->columns-1; j++)
-                std::cout << this->_matrix[i][j] << ", ";
-            std::cout << this->_matrix[i][this->columns-1] << ']' << std::endl;
+    friend std::ostream& operator<<(std::ostream& os, const Matrix<Type>& matrix) {
+        for(size_t i=0; i<matrix.rows; i++) {
+            os << '[';
+            for(size_t j=0; j<matrix.columns-1; j++)
+                os << matrix._matrix[i][j] << ", ";
+            os << matrix._matrix[i][matrix.columns-1] << "]\n";
         }
+        return os;
     }
 
 };
@@ -251,38 +245,28 @@ template<typename Type> class Matrix {
 
 class Polynomial {
 
-    typedef std::complex<double> cd;
-
     std::vector<double> consts;
 
-    std::vector<cd> fft(std::vector<cd> a,  bool invert) {
-        int n = a.size();
-        if (n == 1) return a;
-
-        std::vector<cd> a0(n / 2), a1(n / 2);
-        for (int i = 0; 2 * i < n; i++) {
-            a0[i] = a[2*i];
-            a1[i] = a[2*i+1];
+    void fft (std::vector<std::complex<double>>& a, bool invert) {
+        size_t n =  a.size();
+        if (n == 1)  return;
+    
+        std::vector<std::complex<double>> a0(n/2), a1(n/2);
+        for (size_t i=0, j=0; i<n; i+=2, j++) {
+            a0[j] = a[i];
+            a1[j] = a[i+1];
         }
-        fft(a0, invert);
-        fft(a1, invert);
-
-        double ang = 2 * M_PI / n * (invert ? -1 : 1);
-        cd w(1), wn(cos(ang), sin(ang));
-
-        std::vector<cd> y(a.size());
-
-        for (int i = 0; 2 * i < n; i++) {
-            y[i] = a0[i] + w * a1[i];
-            y[i + n/2] = a0[i] - w * a1[i];
-            if (invert) {
-                y[i] /= 2;
-                y[i + n/2] /= 2;
-            }
+        fft (a0, invert);
+        fft (a1, invert);
+    
+        double ang = 2*M_PI/n * (invert ? -1 : 1);
+        std::complex<double> w(1),  wn(cos(ang), sin(ang));
+        for (size_t i=0; i<n/2; ++i) {
+            a[i] = a0[i] + w * a1[i];
+            a[i+n/2] = a0[i] - w * a1[i];
+            if (invert) a[i] /= 2,  a[i+n/2] /= 2;
             w *= wn;
         }
-
-        return y;
     }
 
     public:
@@ -456,44 +440,33 @@ class Polynomial {
 
     Polynomial& operator*(const Polynomial& poly) {
         assert(this->symbol == poly.symbol);
-        std::vector<cd> fa(this->consts.begin(), this->consts.end()), fb(poly.consts.begin(), poly.consts.end());
+        
+        std::vector<std::complex<double>> fa(this->consts.begin(), this->consts.end()),
+                                     fb(poly.consts.begin(), poly.consts.end());
         size_t n = 1;
-        while(n < this->consts.size() + poly.consts.size()) n <<= 1;
-        fa.resize(n);
-        fb.resize(n);
-
-        fa = fft(fa, false);
-        for(auto x: fa) std::cout << x << ' ';
-        std::cout << '\n';
-        fb = fft(fb, false);
-        for(auto x: fb) std::cout << x << ' ';
-        std::cout << '\n';
-        for(size_t i = 0; i < n; i++) fa[i] *= fb[i];
-        fa = fft(fa, true);
-        for(auto x: fa) std::cout << x << ' ';
-        std::cout << '\n';
-
-        for(auto x: fa) std::cout << sqrt(pow(x.real(), 2) + pow(x.imag(),2)) << ' ';
-        std::cout << '\n';
-
-        Polynomial* p = new Polynomial(this->symbol, n);
-        std::vector<size_t> v(n);
-        for (int i = 0; i < n; i++) v[i] = round(fa[i].real());
-
-        int carry = 0;
-        for (size_t i = 0; i < n; i++) {
-            v[i] += carry;
-            carry = v[i] / 10;
-            v[i] %= 10;
-        }
-
-        for(auto i: v) std::cout << i << ' ';
-        std::cout << '\n';
+        while (n < std::max(this->degree, poly.degree) +1)  n <<= 1;
+        n <<= 1;
+        fa.resize(n),  fb.resize(n);
+    
+        fft (fa, false),  fft (fb, false);
+        for (size_t i=0; i<n; ++i) fa[i] *= fb[i];
+        fft (fa, true);
+        Polynomial* p = new Polynomial(this->symbol, this->degree+poly.degree);
+        for (size_t i=0; i<=p->degree; i++) p->consts[i] = fa[i].real();
 
         return *p;
     }
 
-    Polynomial& operator*=(const Polynomial& value) {}
+    Polynomial& operator*=(const Polynomial& poly) {
+        assert(this->symbol == poly.symbol);
+        *this = (*this) * poly;
+        return *this;
+    }
+
+    friend std::istream& operator>>(std::istream& is,  Polynomial& poly) {
+        for(double& c: poly.consts) is >> c;
+        return is;
+    }
 
     friend std::ostream& operator<<(std::ostream& os, const Polynomial& poly) {
         for(size_t i=0; i<=poly.degree; i++) {
@@ -503,8 +476,8 @@ class Polynomial {
             std::string p;
             if(i<poly.degree-1) p = poly.symbol + "^" + std::to_string(poly.degree-i);
             else if(i==poly.degree-1) p = poly.symbol;
-            if(abs(poly.consts[i]) != 1 || i==poly.degree) os << sign << abs(poly.consts[i]) << p;
-            else os << sign << p;
+            if(fabs(poly.consts[i])==1 && i!=poly.degree) os << sign << p;
+            else os << sign << fabs(poly.consts[i]) << p; 
         }
         return os;
     }
@@ -515,8 +488,8 @@ using namespace std;
 
 signed main() {
 
-    Polynomial a("x", 1, 1, 1);
-    Polynomial b("x", 1, 2, 3);
+    Polynomial a("x", 1, 2, 3);
+    Polynomial b("x", 1, 1, 1);
 
     Polynomial c = a*b;
 
@@ -527,6 +500,12 @@ signed main() {
     cout << '\n';
     cout << c;
     cout << '\n';
+
+    a *= b;
+
+    cout << a << '\n';
+
+    // for(double& x: c) cout << a;
 
     // Matrix<double> af = {{1, 2}, {3, 4}};
     // Matrix<double> bf = {{1}, {2}};
@@ -569,6 +548,5 @@ signed main() {
     // for(auto z: f) cout << sqrt(pow(z.real(), 2) - pow(z.imag(), 2)) << "  ";
 
     // cout << endl;
-
 
 }
