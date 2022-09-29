@@ -1,4 +1,3 @@
-#include <limits>
 #include <vector>
 #include <math.h>
 #include <string>
@@ -54,68 +53,71 @@ template<typename Type> class Matrix {
     }
 
     Matrix<Type>& operator+(const Type& value) {
-        for(size_t i=0; i<this->rows; i++) {
-            for(size_t j=0; j<this->columns; j++) 
-                this->_matrix[i][j] += value;
+        Matrix* m = new Matrix(*this);
+        for(size_t i=0; i<m->rows; i++) {
+            for(size_t j=0; j<m->columns; j++) 
+                m->_matrix[i][j] += value;
         }
-        return *this;
+        return *m;
     }
 
     Matrix<Type>& operator+(Matrix<Type>& matrix) {
         assert(matrix.rows==this->rows && matrix.columns==this->columns);
-        for(size_t i=0; i<this->rows; i++) {
-            for(size_t j=0; j<this->columns; j++) 
-                this->_matrix[i][j] += matrix[i][j];
+        Matrix* m = new Matrix(*this);
+        for(size_t i=0; i<m->rows; i++) {
+            for(size_t j=0; j<m->columns; j++) 
+                m->_matrix[i][j] += matrix[i][j];
         }
-        return *this;
+        return *m;
     }
 
     Matrix<Type>& operator-(const Type& value) {
-        for(size_t i=0; i<this->rows; i++) {
-            for(size_t j=0; j<this->columns; j++) 
-                this->_matrix[i][j] -= value;
+        Matrix* m = new Matrix(*this);
+        for(size_t i=0; i<m->rows; i++) {
+            for(size_t j=0; j<m->columns; j++) 
+                m->_matrix[i][j] -= value;
         }
-        return *this;
+        return *m;
     }
 
     Matrix<Type>& operator-(Matrix<Type>& matrix) {
         assert(matrix.rows==this->rows && matrix.columns==this->columns);
-        for(size_t i=0; i<this->rows; i++) {
-            for(size_t j=0; j<this->columns; j++) 
-                this->_matrix[i][j] -= matrix[i][j];
+        Matrix* m = new Matrix(*this);
+        for(size_t i=0; i<m->rows; i++) {
+            for(size_t j=0; j<m->columns; j++) 
+                m->_matrix[i][j] -= matrix[i][j];
         }
-        return *this;
+        return *m;
     }
 
     Matrix<Type>& operator*(const Type& value) {
-        for(size_t i=0; i<this->rows; i++) {
-            for(size_t j=0; j<this->columns; j++) 
-                this->_matrix[i][j] *= value;
+        Matrix* m = new Matrix(*this);
+        for(size_t i=0; i<m->rows; i++) {
+            for(size_t j=0; j<m->columns; j++) 
+                m->_matrix[i][j] *= value;
         }
-        return *this;
+        return *m;
     }
 
     Matrix<Type>& operator*(const Matrix<Type>& matrix) {
         assert(this->columns == matrix.rows);
-        std::vector<std::vector<Type>> v(this->rows, std::vector<Type>(matrix.columns, 0));
         Matrix<Type>* m = new Matrix(this->rows, matrix.columns, 0);
-        for(size_t i=0; i<v.size(); i++) {
-            for(size_t j=0; j<v[0].size(); j++) { 
-                for(size_t k=0; k<matrix.rows; k++) {    
-                    v[i][j] += (*this)[i][k] * matrix._matrix[k][j];
-                    std::cout << "(" << i << ", " << j << ", " << k <<"),\n";    
-                }
+        for(size_t i=0; i < m->rows; i++) {
+            for(size_t j=0; j < m->columns; j++) { 
+                for(size_t k=0; k < matrix.rows; k++)    
+                    (*m)[i][j] += (*this)[i][k] * matrix._matrix[k][j];    
             }
         }
         return *m;
     }
 
     Matrix<Type>& operator/(const Type& value) {
-        for(size_t i=0; i<this->rows; i++) {
-            for(size_t j=0; j<this->columns; j++) 
-                this->_matrix[i][j] /= value;
+        Matrix* m = new Matrix(*this);
+        for(size_t i=0; i<m->rows; i++) {
+            for(size_t j=0; j<m->columns; j++) 
+                m->_matrix[i][j] /= value;
         }
-        return *this;
+        return *m;
     }
 
     Matrix<Type>& operator/(Matrix<Type>& matrix) {
@@ -127,6 +129,46 @@ template<typename Type> class Matrix {
         m.inverse();
         r = (*this) * m;
         return r;
+    }
+
+    Matrix<Type>& operator+=(const Type& value) {
+        *this = (*this) + value;
+        return *this;
+    }
+
+    Matrix<Type>& operator+=(Matrix<Type>& matrix) {
+        *this = (*this) + matrix;
+        return *this;
+    }
+
+    Matrix<Type>& operator-=(const Type& value) {
+        *this = (*this) - value;
+        return *this;
+    }
+
+    Matrix<Type>& operator-=(Matrix<Type>& matrix) {
+        *this = (*this) - matrix;
+        return *this;
+    }
+
+    Matrix<Type>& operator*=(const Type& value) {
+        *this = (*this) * value;
+        return *this;
+    }
+    
+    Matrix<Type>& operator*=(Matrix<Type>& matrix) {
+        *this = (*this) * matrix;
+        return *this;
+    }
+
+    Matrix<Type>& operator/=(const Type& value) {
+        *this = (*this) / value;
+        return *this;
+    }
+
+    Matrix<Type>& operator/=(Matrix<Type>& matrix) {
+        *this = (*this) / matrix;
+        return *this;
     }
 
     void transpose() {
