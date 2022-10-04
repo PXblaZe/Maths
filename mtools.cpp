@@ -3,9 +3,7 @@
 #include <string>
 #include <cassert>
 #include <complex>
-#include <stdarg.h>
 #include <iostream>
-#include <chrono>
 
 template<typename Type> class Matrix {
 
@@ -490,10 +488,10 @@ class Polynomial {
         assert(this->symbol == poly.symbol);
         
         std::vector<std::complex<double>> fa(this->consts.begin(), this->consts.end()),
-                                     fb(poly.consts.begin(), poly.consts.end());
+                                          fb(poly.consts.begin(), poly.consts.end());
         size_t n = 1;
-        while (n < std::max(this->degree, poly.degree) +1)  n <<= 1;
-        n <<= 1;
+        while (n < std::max(this->degree, poly.degree) +2)  n <<= 1;
+        // n <<= 1;
         fa.resize(n),  fb.resize(n);
     
         fft (fa, false),  fft (fb, false);
