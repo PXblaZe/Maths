@@ -511,7 +511,25 @@ class Polynomial {
         return *this;
     }
 
-    friend std::istream& operator>>(std::istream& is,  Polynomial& poly) {
+    std::vector<double>& get_coefficients() {
+        return this->consts;
+    }  
+
+    friend std::string& to_string(const Polynomial& poly) {
+        std::string* str = new std::string("");
+        for(size_t i=0; i<=poly.degree; i++) {
+            if(!poly.consts[i]) continue;
+            std::string p, sign = (i==0)? "": " + ";
+            if(poly.consts[i]<0) sign = (i==0)? "-": " - ";
+            if(i<poly.degree-1) p = poly.symbol + "^" + std::to_string(poly.degree-i);
+            else if(i==poly.degree-1) p = poly.symbol;
+            if(fabs(poly.consts[i])==1 && i!=poly.degree) *str += sign + p;
+            else *str += sign + std::to_string(fabs(poly.consts[i])) + p; 
+        }
+        return *str;
+    }
+
+    friend std::istream& operator>>(std::istream& is, Polynomial& poly) {
         for(double& c: poly.consts) is >> c;
         return is;
     }
@@ -519,9 +537,8 @@ class Polynomial {
     friend std::ostream& operator<<(std::ostream& os, const Polynomial& poly) {
         for(size_t i=0; i<=poly.degree; i++) {
             if(!poly.consts[i]) continue;
-            std::string sign = (i==0)? "": " + ";
+            std::string p, sign = (i==0)? "": " + ";
             if(poly.consts[i]<0) sign = (i==0)? "-": " - ";
-            std::string p;
             if(i<poly.degree-1) p = poly.symbol + "^" + std::to_string(poly.degree-i);
             else if(i==poly.degree-1) p = poly.symbol;
             if(fabs(poly.consts[i])==1 && i!=poly.degree) os << sign << p;
