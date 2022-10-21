@@ -119,10 +119,6 @@ template<typename Type> class Matrix {
     }
 
     Matrix<Type>& operator/(Matrix<Type>& matrix) {
-        assert(matrix.rows==this->rows 
-            && matrix.columns==this->columns 
-            && matrix.rows==matrix==columns
-        );
         Matrix<Type> m = matrix, r;
         m.inverse();
         r = (*this) * m;
@@ -285,6 +281,7 @@ template<typename Type> class Matrix {
 
 class Polynomial {
 
+    size_t deg;
     std::vector<double> consts;
 
     void fft (std::vector<std::complex<double>>& a, bool invert) {
@@ -311,61 +308,75 @@ class Polynomial {
 
     public:
 
-    size_t degree;
+    const size_t& degree;
     std::string symbol;
 
-    Polynomial(const Polynomial& poly) {
-        this->consts = poly.consts;
-        this->symbol = poly.symbol;
-        this->degree = poly.degree;
+    Polynomial(): degree(deg) {
+        this->deg = 0;
+        this->symbol = "";
+        this->consts = std::vector<double>(1, 0);
     }
 
-    Polynomial(const std::string& symbol, const size_t& degree)
-    : consts(degree+1, 0) {
+    Polynomial(const Polynomial& poly)
+    : degree(deg) {
+        this->deg = poly.deg;
+        this->symbol = poly.symbol;
+        this->consts = poly.consts;
+    }
+
+    Polynomial(const std::string& symbol, const size_t& deg)
+    : consts(deg+1, 0), degree(deg) {
         this->symbol = symbol;
-        this->degree = degree;
+        this->deg = deg;
     }
 
     template<typename... Type>
     Polynomial(const std::string& symbol, Type... args)
-    : consts{args...} {
+    : consts{args...}, degree(deg) {
         this->symbol = symbol;
-        this->degree = this->consts.size()-1;
+        this->deg = this->consts.size()-1;
+    }
+
+    Polynomial& operator=(const Polynomial& poly) {
+        this->deg = poly.deg;
+        this->symbol = poly.symbol;
+        this->consts = poly.consts;
+        return *this;
     }
 
     double operator()(const double value) const {
         double res = 0;
-        for(size_t i=0; i<=this->degree; i++) 
-            res += this->consts[i]*pow(value, this->degree-i);
+        for(size_t i=0; i<=this->deg; i++) 
+            res += this->consts[i]*pow(value, this->deg-i);
         return res;
     }
 
 
     Polynomial& operator+(const double& value) {
         Polynomial* p = new Polynomial(*this);
-        p->consts[p->degree] += value; 
+        p->consts[p->deg] += value; 
         return *p;
     }
 
     Polynomial& operator+=(const double& value) {
-        this->consts[this->degree] += value;
+        this->consts[this->deg] += value;
         return *this;
     }
 
     Polynomial& operator+(const Polynomial& poly) {
         assert(this->symbol == poly.symbol);
-        Polynomial* x = new Polynomial(poly.symbol, std::max(this->degree, poly.degree));
-        if(this->degree>=poly.degree) {
-            for(size_t i = 0; i<=x->degree; i++) {
-                if(i >= this->degree-poly.degree)
-                    x->consts[i] = this->consts[i] + poly.consts[i-this->degree+poly.degree];
+        Polynomial* x = new Polynomial(poly.symbol, std::max(this->deg, poly.deg));
+        if(this->deg>=poly.deg) {
+            for(size_t i = 0; i<=x->deg; i++) {
+                if(i >= this->deg-poly.deg)
+                    x->consts[i] = this->consts[i] + poly.consts[i-this->deg+poly.deg];
                 else x->consts[i] = this->consts[i];
             }
         }
         else {
-            for(size_t i = 0; i<=x->degree; i++) {
-                if(i >= poly.degree-this->degree)
-                    x->consts[i] = poly.consts[i] + this->consts[i-poly.degree+this->degree];
+            for(size_t i = 0; i<=x->deg; i++) {
+                if(i >= poly.deg-this->deg)
+                    x->consts[i] = poly.consts[i] + this->consts[i-poly.deg+this->deg];
                 else x->consts[i] = poly.consts[i];
             }
         }
@@ -374,26 +385,32 @@ class Polynomial {
             if(x->consts[i]) break;
             i++; 
         }
-        x->degree -= i;
-        x->consts = std::vector<double>(x->consts.begin()+i, x->consts.end());
+        if(x->consts.begin()+i==x->consts.end()) {
+            x->consts = {0};
+            x->deg = 0;
+        }
+        else {
+            x->deg -= i;
+            x->consts = std::vector<double>(x->consts.begin()+i, x->consts.end());
+        }
         return *x;
     }
 
     Polynomial& operator+=(const Polynomial& poly) {
         assert(this->symbol == poly.symbol);
-        size_t s = std::max(this->degree, poly.degree);
+        size_t s = std::max(this->deg, poly.deg);
         std::vector<double> v(s+1);
-        if(this->degree>=poly.degree) {
+        if(this->deg>=poly.deg) {
             for(size_t i = 0; i<=s; i++) {
-                if(i >= this->degree-poly.degree)
-                    v[i] = this->consts[i] + poly.consts[i-this->degree+poly.degree];
+                if(i >= this->deg-poly.deg)
+                    v[i] = this->consts[i] + poly.consts[i-this->deg+poly.deg];
                 else v[i] = this->consts[i];
             }
         }
         else {
             for(size_t i = 0; i<=s; i++) {
-                if(i >= poly.degree-this->degree)
-                    v[i] = poly.consts[i] + this->consts[i-poly.degree+this->degree];
+                if(i >= poly.deg-this->deg)
+                    v[i] = poly.consts[i] + this->consts[i-poly.deg+this->deg];
                 else v[i] = poly.consts[i];
             }
         }
@@ -402,36 +419,42 @@ class Polynomial {
             if(v[i]) break;
             i++; 
         }
-        this->degree = s-i;
-        this->consts = std::vector<double>(v.begin()+i, v.end());
+        if(v.begin()+i==v.end()) {
+            this->consts = {0};
+            this->deg = 0;
+        }
+        else {
+            this->deg = s-i;
+            this->consts = std::vector<double>(v.begin()+i, v.end());
+        }
         return *this;
     }
     
     Polynomial& operator-(const double& value) {
         Polynomial* p = new Polynomial(*this);
-        p->consts[p->degree] -= value; 
+        p->consts[p->deg] -= value; 
         return *p;
     }
 
     Polynomial& operator-=(const double& value) {
-        this->consts[this->degree] -= value;
+        this->consts[this->deg] -= value;
         return *this;
     }
 
     Polynomial& operator-(const Polynomial& poly) {
         assert(this->symbol == poly.symbol);
-        Polynomial* x = new Polynomial(poly.symbol, std::max(this->degree, poly.degree));
-        if(this->degree>=poly.degree) {
-            for(size_t i = 0; i<=x->degree; i++) {
-                if(i >= this->degree-poly.degree)
-                    x->consts[i] = this->consts[i] - poly.consts[i-this->degree+poly.degree];
+        Polynomial* x = new Polynomial(poly.symbol, std::max(this->deg, poly.deg));
+        if(this->deg>=poly.deg) {
+            for(size_t i = 0; i<=x->deg; i++) {
+                if(i >= this->deg-poly.deg)
+                    x->consts[i] = this->consts[i] - poly.consts[i-this->deg+poly.deg];
                 else x->consts[i] = this->consts[i];
             }
         }
         else {
-            for(size_t i = 0; i<=x->degree; i++) {
-                if(i >= poly.degree-this->degree)
-                    x->consts[i] = this->consts[i-poly.degree+this->degree] - poly.consts[i];
+            for(size_t i = 0; i<=x->deg; i++) {
+                if(i >= poly.deg-this->deg)
+                    x->consts[i] = this->consts[i-poly.deg+this->deg] - poly.consts[i];
                 else x->consts[i] = -poly.consts[i];
             }
         }
@@ -440,26 +463,32 @@ class Polynomial {
             if(x->consts[i]) break;
             i++; 
         }
-        x->degree -= i;
-        x->consts = std::vector<double>(x->consts.begin()+i, x->consts.end());
+        if(x->consts.begin()+i==x->consts.end()) {
+            x->consts = {0};
+            x->deg = 0;
+        }
+        else {
+            x->deg -= i;
+            x->consts = std::vector<double>(x->consts.begin()+i, x->consts.end());
+        }
         return *x;
     }
 
     Polynomial& operator-=(const Polynomial& poly) {
         assert(this->symbol == poly.symbol);
-        size_t s = std::max(this->degree, poly.degree);
+        size_t s = std::max(this->deg, poly.deg);
         std::vector<double> v(s+1);
-        if(this->degree>=poly.degree) {
+        if(this->deg>=poly.deg) {
             for(size_t i = 0; i<=s; i++) {
-                if(i >= this->degree-poly.degree)
-                    v[i] = this->consts[i] - poly.consts[i-this->degree+poly.degree];
+                if(i >= this->deg-poly.deg)
+                    v[i] = this->consts[i] - poly.consts[i-this->deg+poly.deg];
                 else v[i] = this->consts[i];
             }
         }
         else {
             for(size_t i = 0; i<=s; i++) {
-                if(i >= poly.degree-this->degree)
-                    v[i] = this->consts[i-poly.degree+this->degree] - poly.consts[i];
+                if(i >= poly.deg-this->deg)
+                    v[i] = this->consts[i-poly.deg+this->deg] - poly.consts[i];
                 else v[i] = -poly.consts[i];
             }
         }
@@ -468,8 +497,14 @@ class Polynomial {
             if(v[i]) break;
             i++; 
         }
-        this->degree = s-i;
-        this->consts = std::vector<double>(v.begin()+i, v.end());
+        if(v.begin()+i==v.end()) {
+            this->consts = {0};
+            this->deg = 0;
+        }
+        else {
+            this->deg = s-i;
+            this->consts = std::vector<double>(v.begin()+i, v.end());
+        }
         return *this;
     }
 
@@ -489,39 +524,51 @@ class Polynomial {
         
         std::vector<std::complex<double>> fa(this->consts.begin(), this->consts.end()),
                                           fb(poly.consts.begin(), poly.consts.end());
-        size_t n = 1;
-        while (n < std::max(this->degree, poly.degree) +2)  n <<= 1;
-        // n <<= 1;
+        unsigned long long int n = 1;
+        while (n < std::max(this->deg, poly.deg) +3)  n <<= 1;
+        
         fa.resize(n),  fb.resize(n);
     
-        fft (fa, false),  fft (fb, false);
-        for (size_t i=0; i<n; ++i) fa[i] *= fb[i];
-        fft (fa, true);
-        Polynomial* p = new Polynomial(this->symbol, this->degree+poly.degree);
-        for (size_t i=0; i<=p->degree; i++) p->consts[i] = fa[i].real();
+        fft(fa, false),  fft(fb, false);
+        for(size_t i=0; i<n; ++i) fa[i] *= fb[i];
+        fft(fa, true);
+        Polynomial* p = new Polynomial(this->symbol, this->deg+poly.deg);
+        for(size_t i=0; i<=p->deg; i++) p->consts[i] = fa[i].real();
 
         return *p;
     }
 
     Polynomial& operator*=(const Polynomial& poly) {
         assert(this->symbol == poly.symbol);
-        *this = (*this) * poly;
+        *this = *this * poly;
         return *this;
     }
 
-    std::vector<double>& get_coefficients() {
+    std::vector<double>& get_Coefficients() {
         return this->consts;
     }  
 
+    friend Polynomial& pow(const Polynomial& poly, size_t power) {
+        Polynomial* p = new Polynomial(poly);
+        while(--power) *p *= poly;
+        return *p;
+    }
+
+    friend Polynomial& round(const Polynomial& poly) {
+        Polynomial* p = new Polynomial(poly);
+        for(double& co: p->consts) co = round(co);
+        return *p;
+    }
+
     friend std::string& to_string(const Polynomial& poly) {
         std::string* str = new std::string("");
-        for(size_t i=0; i<=poly.degree; i++) {
+        for(size_t i=0; i<=poly.deg; i++) {
             if(!poly.consts[i]) continue;
             std::string p, sign = (i==0)? "": " + ";
             if(poly.consts[i]<0) sign = (i==0)? "-": " - ";
-            if(i<poly.degree-1) p = poly.symbol + "^" + std::to_string(poly.degree-i);
-            else if(i==poly.degree-1) p = poly.symbol;
-            if(fabs(poly.consts[i])==1 && i!=poly.degree) *str += sign + p;
+            if(i<poly.deg-1) p = poly.symbol + "^" + std::to_string(poly.deg-i);
+            else if(i==poly.deg-1) p = poly.symbol;
+            if(fabs(poly.consts[i])==1 && i!=poly.deg) *str += sign + p;
             else *str += sign + std::to_string(fabs(poly.consts[i])) + p; 
         }
         return *str;
@@ -533,43 +580,16 @@ class Polynomial {
     }
 
     friend std::ostream& operator<<(std::ostream& os, const Polynomial& poly) {
-        for(size_t i=0; i<=poly.degree; i++) {
-            if(!poly.consts[i]) continue;
+        for(size_t i=0; i<=poly.deg; i++) {
+            if(!poly.consts[i] && poly.deg) continue;
             std::string p, sign = (i==0)? "": " + ";
             if(poly.consts[i]<0) sign = (i==0)? "-": " - ";
-            if(i<poly.degree-1) p = poly.symbol + "^" + std::to_string(poly.degree-i);
-            else if(i==poly.degree-1) p = poly.symbol;
-            if(fabs(poly.consts[i])==1 && i!=poly.degree) os << sign << p;
+            if(poly.deg && i<poly.deg-1) p = poly.symbol + "^" + std::to_string(poly.deg-i);
+            else if(i==poly.deg-1) p = poly.symbol;
+            if(fabs(poly.consts[i])==1 && i!=poly.deg) os << sign << p;
             else os << sign << fabs(poly.consts[i]) << p; 
         }
         return os;
     }
 
 };
-
-using namespace std;
-
-signed main() {
-
-    int n, m;
-    cout << "Enter the degree of 1st polynomial: ";
-    cin >> n;
-    cout << "Enter the coefficients of the polynomial: ";
-    Polynomial a("x", (size_t)n);
-    cin >> a;
-    cout << "Enter the degree of 2nd polynomial: ";
-    cin >> m;
-    cout << "Enter the coefficients of the polynomial: ";
-    Polynomial b("x", (size_t)m);
-    cin >> b;
-
-    cout << "First polynomial:  " << a << '\n';
-    cout << "Second polynomial: " << b << '\n';
-
-    Polynomial ad = a+b, sb = a-b, ml = a*b;
-
-    cout << "Addition: " << ad << '\n';
-    cout << "Substraction: " << sb << '\n';
-    cout << "Multiplication: " << ml << '\n';
-
-}
