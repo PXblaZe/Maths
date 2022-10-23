@@ -547,16 +547,28 @@ class Polynomial {
         return this->consts;
     }  
 
-    friend Polynomial& pow(const Polynomial& poly, size_t power) {
-        Polynomial* p = new Polynomial(poly);
-        while(--power) *p *= poly;
-        return *p;
-    }
-
     friend Polynomial& operator-(const double& value, const Polynomial& poly) {
         Polynomial* p = new Polynomial(poly);
         for(double& c: p->consts) c = -c;
         p->consts[p->deg] += value;
+        return *p;
+    }
+
+    friend Polynomial& operator+(const double& value, const Polynomial& poly) {
+        Polynomial* p = new Polynomial(poly);
+        *p += value;
+        return *p;
+    }
+
+    friend Polynomial& operator*(const double& value, const Polynomial& poly) {
+        Polynomial* p = new Polynomial(poly);
+        *p *= value;
+        return *p;
+    }
+
+    friend Polynomial& pow(const Polynomial& poly, size_t power) {
+        Polynomial* p = new Polynomial(poly);
+        while(--power) *p *= poly;
         return *p;
     }
 
