@@ -344,13 +344,12 @@ class Polynomial {
         return *this;
     }
 
-    double operator()(const double value) const {
-        double res = 0;
-        for(size_t i=0; i<=this->deg; i++) 
-            res += this->consts[i]*pow(value, this->deg-i);
-        return res;
+    double operator()(const double& value) const {
+        double p = 1, v = 0;
+        for(size_t i = 0; i <= this->deg; i++) 
+            v += this->consts[this->deg-i]*p, p *= value;
+        return v;
     }
-
 
     Polynomial& operator+(const double& value) {
         Polynomial* p = new Polynomial(*this);
@@ -551,6 +550,13 @@ class Polynomial {
     friend Polynomial& pow(const Polynomial& poly, size_t power) {
         Polynomial* p = new Polynomial(poly);
         while(--power) *p *= poly;
+        return *p;
+    }
+
+    friend Polynomial& operator-(const double& value, const Polynomial& poly) {
+        Polynomial* p = new Polynomial(poly);
+        for(double& c: p->consts) c = -c;
+        p->consts[p->deg] += value;
         return *p;
     }
 
