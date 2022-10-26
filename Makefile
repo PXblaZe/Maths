@@ -28,16 +28,16 @@ install: ${LDir}/*
 
 	@echo "Installing..."
 	@ar rsv libmaths.so ${PWD}/${LDir}/*
-	@sudo mv libmaths.so /usr/lib/
-	@sudo cp -r ${PWD}/maths /usr/include/
+	@sudo mv libmaths.so /usr/local/lib/
+	@sudo cp -r ${PWD}/maths /usr/local/include/
 	@echo "Done."
 
 
-uninstall: /usr/lib/libmaths.so /usr/include/maths
+uninstall: /usr/local/lib/libmaths.so /usr/local/include/maths
 
 	@echo "Uninstalling..."
-	@sudo rm -rf /usr/include/maths
-	@sudo rm -f /usr/lib/libmaths.so
+	@sudo rm -rf /usr/local/include/maths
+	@sudo rm -f /usr/local/lib/libmaths.so
 	@echo "Done."
 
 
