@@ -2,7 +2,7 @@ LDir=libs
 SDir=src
 
 
-build: src/*
+build: ${SDir}/*
 
 	@set -e
 	
@@ -21,12 +21,32 @@ build: src/*
 
 	@echo "Successfully done."
 
-# install: build
+
+install: ${LDir}/*
+
+	@set -e
+
+	@echo "Installing..."
+	@ar rsv libmaths.so ${PWD}/${LDir}/*
+	@sudo mv libmaths.so /usr/lib/
+	@sudo cp -r ${PWD}/maths /usr/include/
+	@echo "Done."
+
+
+uninstall: /usr/lib/libmaths.so /usr/include/maths
+
+	@echo "Uninstalling..."
+	@sudo rm -rf /usr/include/maths
+	@sudo rm -f /usr/lib/libmaths.so
+	@echo "Done."
+
 
 clean: ${LDir}/
 
-	@echo "Cleaning..."
-	@rm -rf ${LDir}
-	@echo "Successfully done."
+	@if test -d ${LDir}; then \
+		echo "Cleaning..." ; \
+		rm -rf ${LDir} ; \
+		echo "Successfully done." ; \
+	fi
 
 	
