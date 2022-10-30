@@ -26,6 +26,8 @@ signed main() {
     cout << pwr(2.0, 3) << '\n';
     cout << sql(2.5) << '\n';
     cout << square(5) << '\n';
-    cout << poly(.0012) << '\n';
+    cout << poly(.00012) << '\n';
+
+    cout << pwr(2, 3) + sql(2.5) + square(5) + poly(.00012) << '\n';
 
 }
