@@ -1,36 +1,31 @@
-
+#include <functional>
+#include <iostream>
 #include <maths/algebra.hpp>
 #include <maths/tools.hpp>
 
 using namespace std;
 
-class Power {
-    public:
-    double operator()(double a, double b) const {
-        return pow(a, b);
-    }
-};
+double pwfun(double a) {
+    return pow(a, 2);
+}
 
 signed main() {
 
     // Matrix<int> m(3, 3, 5);
 
     Polynomial p("x", 12.132, 13123, 312.34);
-
-    p *= p;
-
+    p *= p - 11.234;
     cout << p;
-
-    // for(double c: p.get_Coefficients()) cout << c << ' ';
     cout << '\n';
 
-    Power pw;
+    Function<FnClsGtr<double(double, double)>> pwr(pow);    
+    Function<function<double(double)>> sql([](double x) -> double {return pow(x, 2);});
+    Function<FnClsGtr<double(double)>> square(pwfun);
+    Function<Polynomial> poly(p);
 
-    // cout << pw(2, 3) << '\n';
-
-    Function<Power> powf(pw);
-    Function<Polynomial> polyf(p);
-
-    cout << powf(2, 3) << ' ' << polyf(.0125)  << '\n';
+    cout << pwr(2.0, 3) << '\n';
+    cout << sql(2.5) << '\n';
+    cout << square(5) << '\n';
+    cout << poly(.0012) << '\n';
 
 }
