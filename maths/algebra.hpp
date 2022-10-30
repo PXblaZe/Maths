@@ -1,6 +1,5 @@
-#ifndef __ALGEBRA_HPP__
-
-#define __ALGEBRA_HPP__
+#ifndef __MATHS_ALGEBRA_HPP__
+#define __MATHS_ALGEBRA_HPP__
 
 #include <vector>
 #include <math.h>

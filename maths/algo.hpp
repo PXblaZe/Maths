@@ -1,6 +1,6 @@
-#ifndef __ALGO_HPP__
+#ifndef __MATHS_ALGO_HPP__
 
-#define __ALGO_HPP__
+#define __MATHS_ALGO_HPP__
 
 #include <vector>
 #include <complex>
