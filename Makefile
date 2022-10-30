@@ -27,7 +27,7 @@ install: ${LDir}/*
 	@set -e
 
 	@echo "Installing..."
-	@ar rsv libmaths.so ${PWD}/${LDir}/*
+	@sudo ar rsv libmaths.so ${PWD}/${LDir}/*
 	@sudo mv libmaths.so /usr/local/lib/
 	@sudo cp -r ${PWD}/maths /usr/local/include/
 	@echo "Done."
