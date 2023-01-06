@@ -33,11 +33,6 @@ template<typename Type> class Matrix {
         this->rows = rows;
         this->columns = columns;
         this->_matrix = std::vector<std::vector<Type>>(this->rows, std::vector<Type>(this->columns, fill));
-        for(int i=0; i<this->rows; i++) {
-            for(int j=0; j<this->columns; j++)
-                std::cout << this->_matrix[i][j] << ' ';
-            std::cout << '\n'; 
-        }
     }
 
     Matrix(std::initializer_list<std::vector<Type>> c): _matrix{c} {
@@ -353,4 +348,11 @@ class Polynomial {
 
 };
 
+
+class Vector {
+    
+};
+
 #endif
+
+
