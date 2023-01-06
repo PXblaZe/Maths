@@ -57,7 +57,7 @@ class Limits {
     }
 
     template<class RT, class... Param>
-    static RT negetive(const FnClsGtr<RT(Param...)>& func, Param... limit_value) {\
+    static RT negetive(const FnClsGtr<RT(Param...)>& func, Param... limit_value) {
         ((limit_value -= limh0p), ...);
         return func(limit_value...);
     }
