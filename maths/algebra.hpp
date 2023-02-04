@@ -26,7 +26,7 @@ template<size_t BITS> class Integer {
         t.set(N-1);
         size_t r = 0;
         while(cp.count() != 1 && (num&t).none()) 
-            cp &= sub(cp, std::bitset<N>(1)), t>>=1, r++;
+            cp &= __sub__(cp, std::bitset<N>(1)), t>>=1, r++;
         return (cp.count() == 1) ? N-cp._Find_first()-1: r;
     }
 
@@ -49,8 +49,10 @@ template<size_t BITS> class Integer {
     }
 
     template<size_t N>
-    inline int __cmp__(const std::bitset<N>& num1, const std::bitset<N>& num2) const {
-        return num2[N-__cntlz__(num1^num2)-1] ? 1: -1;
+    inline int __cmp__(std::bitset<N> num1, const std::bitset<N>& num2) const {
+        num1 ^= num2;
+        if(num1.none()) return 0;
+        return num2[N-__cntlz__(num1)-1] ? 1: -1;
     }
 
     template<size_t N>
@@ -67,15 +69,16 @@ template<size_t BITS> class Integer {
     }
 
     template<size_t N>
-    inline std::bitset<N> __div__(std::bitset<N> a, const std::bitset<N>& b) const {
+    inline std::bitset<N> __div__(std::bitset<N> a, std::bitset<N> b)  {
         if (b.none()) throw std::runtime_error("ZeroDivisionError: division by zero.");
+        if (a.none()) return a;
         if (b.count() == 1) return a >> b._Find_first();
         if (!__cmp__(a, b)) return std::bitset<N>(1);
         std::bitset<N> result;
         for (size_t i = N-__cntlz__(a)-1; ; i--) {
-            if (__cmp__(a >> i, b) != 1) {
-                result = add(result, std::bitset<N>(1 << i));
-                a = __sub__(a, b << i);
+            if (__cmp__((a >> i), b) != 1) {
+                result = __add__(result, std::bitset<N>((1 << i)));
+                a = __sub__(a, (b << i));
             }
             if(!i) break;
         }
@@ -83,9 +86,10 @@ template<size_t BITS> class Integer {
     }
 
     template<size_t N>
-    inline std::bitset<N> __mod__(std::bitset<N> a, const std::bitset<N>& b) const {
+    inline std::bitset<N> __mod__(std::bitset<N> a, std::bitset<N> b)  {
         if (b.none()) throw std::runtime_error("ZeroDivisionError: integer division or modulo by zero.");
-        if (b.count() == 1) return a&sub(b, std::bitset<N>(1));
+        if (a.none()) return a;
+        if (b.count() == 1) return a&__sub__(b, std::bitset<N>(1));
         int acb = __cmp__(a, b);
         if (acb == 1) return a;
         if (!acb) return std::bitset<N>();
@@ -105,24 +109,29 @@ template<size_t BITS> class Integer {
         this->bits = number.bits;
     }
 
-    Integer(const size_t& number) {
-        if(BITS >= 64) bits = number;
-    }
-
-    Integer(const int& number) {
-        if(BITS >= 31) {
-            bits = abs(number);
-            sign = number < 0;
-        }
-    }
-
-    Integer(char* number) {
-        if(ch == '-') sign = true, number++;
+    Integer(const char* number) {
+        if(*number == '-') sign = true, number++;
         while (true) {
             bits = __add__(bits, std::bitset<BITS>(*number - 48));
             number++;
             if(*number == '\0') break;
             bits = __mul10__(bits);
+        }
+    }
+
+    template<typename _T, typename std::enable_if<!std::is_same<_T, const char*>::value, int>::type = 0>
+    Integer(_T number) {
+        bool isunum = number < 0 ? false : (-number > 0 ? true: false);
+        if (isunum) {
+            if (BITS >= sizeof(_T)*8) bits = number;
+            else throw std::overflow_error("number is greater than the maximum value the data type can hold.");
+        }
+        else {
+            if (BITS >= sizeof(_T)*8 -1) {
+                sign = number < 0;
+                bits = sign ? -number: number;
+            }
+            else throw std::overflow_error("number is greater than the maximum value the data type can hold.");
         }
     }
 
@@ -152,11 +161,11 @@ template<size_t BITS> class Integer {
     }
 
     inline bool operator<=(const Integer<BITS>& number) const {
-        return !(*this > nummber);
+        return !(*this > number);
     }
 
     inline bool operator>=(const Integer<BITS>& number) const {
-        return !(*this < number)
+        return !(*this < number);
     }
 
     Integer<BITS>& operator+(const Integer<BITS>& number) const {
@@ -222,6 +231,7 @@ template<size_t BITS> class Integer {
 
     Integer<BITS>& operator%(Integer<BITS>& number) const {
         Integer<BITS>* num = new Integer();
+        num->sign = this->sign & number.sign;
         num->bits = __mod__(this->bits, number.bits);
         return *num;
     }
@@ -231,7 +241,7 @@ template<size_t BITS> class Integer {
         return *this;
     }
 
-    inline static Integer<BITS>& INF() const {
+    inline static Integer<BITS>& INF() {
         Integer<BITS> *inf = new Integer();
         inf->bits.set();
         return *inf;
@@ -257,7 +267,30 @@ template<size_t BITS> class Integer {
         return this->bits.count()&1;
     }
 
-    inline unsigned long long to_ullong() {
+    inline char* to_string() const {
+         std::bitset<N> c = bits;
+        // std::cout << c << '\n';
+        size_t n = 0;
+        while(c.any()) {
+            // std::cout << c << '\n';
+            c = __div__(c, std::bitset<N>("1010"));
+            // std::cout << c << "\n\n";
+            n++;
+        }
+        // std::cout << n << std::endl;
+        
+        char* dec = new char[n+1];
+        dec[n] = '\0', c = bits;
+        for(size_t i = n-1; ; i--) {
+            dec[i] = __mod__(c, std::bitset<N>("1010")).to_ullong() + '0';
+            c = __div__(c, std::bitset<N>("1010"));
+            if (!i) break;
+        }
+        return dec;
+    }
+
+
+    inline unsigned long long int to_ullong() {
         return bits.to_ullong();
     }
 
