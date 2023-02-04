@@ -4,11 +4,274 @@
 #include <vector>
 #include <math.h>
 #include <string>
+#include <bitset>
 #include <cassert>
 #include <complex>
 #include <iostream>
+#include <stdexcept>
 
 #include "algo.hpp"
+
+
+template<size_t BITS> class Integer {
+
+    bool sign = false;
+    std::bitset<BITS> bits;
+
+    template<size_t N>
+    inline size_t __cntlz__(const std::bitset<N>& num) const {
+        if(num.none()) return N;
+        std::bitset<N> t, cp;
+        cp = num;
+        t.set(N-1);
+        size_t r = 0;
+        while(cp.count() != 1 && (num&t).none()) 
+            cp &= sub(cp, std::bitset<N>(1)), t>>=1, r++;
+        return (cp.count() == 1) ? N-cp._Find_first()-1: r;
+    }
+
+    template<size_t N>
+    inline std::bitset<N> __add__(std::bitset<N> num1, std::bitset<N> num2) const {
+        if(num1.none()) return num2;
+        else if(num2.none()) return num1;
+        else return __add__(num1^num2, (num1&num2)<<1);
+    }
+
+    template<size_t N>
+    inline std::bitset<N> __sub__(std::bitset<N> num1, std::bitset<N> num2) const {
+        if(num2.none()) return num1;
+        else return __sub__(num1^num2, (~num1&num2)<<1);
+    }
+
+    template<size_t N>
+    inline std::bitset<N> __mul10__(const std::bitset<N>& num) const {
+        return __add__(num<<3, num<<1);
+    }
+
+    template<size_t N>
+    inline int __cmp__(const std::bitset<N>& num1, const std::bitset<N>& num2) const {
+        return num2[N-__cntlz__(num1^num2)-1] ? 1: -1;
+    }
+
+    template<size_t N>
+    inline std::bitset<N> __mul__(std::bitset<N> num1, std::bitset<N> num2) const {
+        if (num1.none() || num2.none()) return std::bitset<N>();
+        if (num1.count() == 1) return num2 << num1._Find_first();
+        if (num2.count() == 1) return num1 << num2._Find_first();
+        std::bitset<N> res;
+        while(num2.any()) {
+            if(num2[0]) res = __add__(res, num1);
+            num1 <<= 1, num2 >>= 1;
+        }
+        return res;
+    }
+
+    template<size_t N>
+    inline std::bitset<N> __div__(std::bitset<N> a, const std::bitset<N>& b) const {
+        if (b.none()) throw std::runtime_error("ZeroDivisionError: division by zero.");
+        if (b.count() == 1) return a >> b._Find_first();
+        if (!__cmp__(a, b)) return std::bitset<N>(1);
+        std::bitset<N> result;
+        for (size_t i = N-__cntlz__(a)-1; ; i--) {
+            if (__cmp__(a >> i, b) != 1) {
+                result = add(result, std::bitset<N>(1 << i));
+                a = __sub__(a, b << i);
+            }
+            if(!i) break;
+        }
+        return result;
+    }
+
+    template<size_t N>
+    inline std::bitset<N> __mod__(std::bitset<N> a, const std::bitset<N>& b) const {
+        if (b.none()) throw std::runtime_error("ZeroDivisionError: integer division or modulo by zero.");
+        if (b.count() == 1) return a&sub(b, std::bitset<N>(1));
+        int acb = __cmp__(a, b);
+        if (acb == 1) return a;
+        if (!acb) return std::bitset<N>();
+        for (size_t i = N-__cntlz__(a)-1; ; i--) {
+            if (__cmp__(a >> i, b) != 1) a = __sub__(a, b << i);
+            if(!i) break;
+        }
+        return a;
+    }
+
+    public:
+    
+    Integer() {}
+
+    Integer(const Integer<BITS>& number) {
+        this->sign = number.sign;
+        this->bits = number.bits;
+    }
+
+    Integer(const size_t& number) {
+        if(BITS >= 64) bits = number;
+    }
+
+    Integer(const int& number) {
+        if(BITS >= 31) {
+            bits = abs(number);
+            sign = number < 0;
+        }
+    }
+
+    Integer(char* number) {
+        if(ch == '-') sign = true, number++;
+        while (true) {
+            bits = __add__(bits, std::bitset<BITS>(*number - 48));
+            number++;
+            if(*number == '\0') break;
+            bits = __mul10__(bits);
+        }
+    }
+
+    inline bool operator!() const {
+        return this->bits.none();
+    }
+
+    inline bool operator==(const Integer<BITS>& number) const {
+        if(this->sign != number.sign) return false;
+        return !__cmp__(this->bits, number.bits);
+    }
+
+    inline bool operator!=(const Integer<BITS>& number) const {
+        return !(*this == number);
+    }
+
+    inline bool operator<(const Integer<BITS>& number) const {
+        if(this->sign != number.sign) return this->sign;
+        int m = __cmp__(this->bits, number.bits);
+        return this->sign ? m == -1: m == 1;
+    }
+
+    inline bool operator>(const Integer<BITS>& number) const {
+        if(this->sign != number.sign) return number.sign;
+        int m = __cmp__(this->bits, number.bits);
+        return this->sign ? m == 1: m == -1;
+    }
+
+    inline bool operator<=(const Integer<BITS>& number) const {
+        return !(*this > nummber);
+    }
+
+    inline bool operator>=(const Integer<BITS>& number) const {
+        return !(*this < number)
+    }
+
+    Integer<BITS>& operator+(const Integer<BITS>& number) const {
+        Integer<BITS>* num = new Integer();
+        if(this->sign == number.sign) {
+            num->bits = __add__(this->bits, number.bits);
+            num->sign = this->sign;
+        }
+        else {
+            int cmp = __cmp__(this->bits, number.bits);
+            if(cmp == -1) {
+                num->bits = __sub__(this->bits, number.bits);
+                num->sign = this->sign;
+            }
+            else if(cmp == 1) {
+                num->bits = __sub__(number.bits, this->bits);
+                num->sign = number.sign;
+            }
+        }
+        return *num;
+    }
+
+    Integer<BITS>& operator+=(const Integer<BITS>& number) {
+        *this = *this + number;
+        return *this;
+    }
+
+    Integer<BITS>& operator-(Integer<BITS> number) const {
+        Integer<BITS>* num = new Integer();
+        number.sign = !number.sign;
+        *num = *this + number;
+        return *num;
+    }
+
+    Integer<BITS>& operator-=(const Integer<BITS>& number) {
+        *this = *this - number;
+        return *this;
+    }
+
+    Integer<BITS>& operator*(Integer<BITS>& number) const {
+        Integer<BITS>* num = new Integer();
+        num->sign = this->sign ^ number.sign;
+        num->bits = __mul__(this->bits, number.bits);
+        return *num;
+    }
+
+    Integer<BITS>& operator*=(const Integer<BITS>& number) {
+        *this = *this * number;
+        return *this;
+    }
+
+    Integer<BITS>& operator/(Integer<BITS>& number) const {
+        Integer<BITS>* num = new Integer();
+        num->sign = this->sign ^ number.sign;
+        num->bits = __div__(this->bits, number.bits);
+        return *num;
+    }
+
+    Integer<BITS>& operator/=(const Integer<BITS>& number) {
+        *this = *this / number;
+        return *this;
+    }
+
+    Integer<BITS>& operator%(Integer<BITS>& number) const {
+        Integer<BITS>* num = new Integer();
+        num->bits = __mod__(this->bits, number.bits);
+        return *num;
+    }
+
+    Integer<BITS>& operator%=(const Integer<BITS>& number) {
+        *this = *this % number;
+        return *this;
+    }
+
+    inline static Integer<BITS>& INF() const {
+        Integer<BITS> *inf = new Integer();
+        inf->bits.set();
+        return *inf;
+    }
+
+    inline void setINF() {
+        this->bits.set();
+    }
+
+    inline size_t bits_clz() const {
+        return __cntlz__(this->bits);
+    }
+
+    inline size_t bits_ctz() const {
+        return this->bits._Find_first();
+    }
+
+    inline size_t bits_popcount() const {
+        return this->bits.count();
+    }
+
+    inline bool bits_parity() const {
+        return this->bits.count()&1;
+    }
+
+    inline unsigned long long to_ullong() {
+        return bits.to_ullong();
+    }
+
+    inline void print_bits() const {
+        std::cout << sign << bits << std::endl;
+    }
+
+};
+
+typedef Integer<128> Int128;
+typedef Integer<256> Int256;
+typedef Integer<512> Int512;
+typedef Integer<1024> Int1KB;
+
 
 template<typename Type> class Matrix {
 
