@@ -1,0 +1,165 @@
+\hypertarget{classInteger}{}\doxysection{Integer$<$ BITS $>$ Class Template Reference}
+\label{classInteger}\index{Integer$<$ BITS $>$@{Integer$<$ BITS $>$}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classInteger_1_1iterator}{iterator}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classInteger_ae3dd0dc4332a174a4a8b0ad7be7c834d}\label{classInteger_ae3dd0dc4332a174a4a8b0ad7be7c834d}} 
+constexpr {\bfseries Integer} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number)
+\item 
+\mbox{\Hypertarget{classInteger_a7c9d09f4b3931fed7e2ed008edea3edf}\label{classInteger_a7c9d09f4b3931fed7e2ed008edea3edf}} 
+{\footnotesize template$<$size\+\_\+t NB$>$ }\\constexpr {\bfseries Integer} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ NB $>$ \&number)
+\item 
+\mbox{\Hypertarget{classInteger_a2ca140fdc5ceb388a43852d435d21cf4}\label{classInteger_a2ca140fdc5ceb388a43852d435d21cf4}} 
+{\bfseries Integer} (const std\+::bitset$<$ BITS $>$ \&\+\_\+b)
+\item 
+\mbox{\Hypertarget{classInteger_a1720d7388c4469550aa049b45cab86ad}\label{classInteger_a1720d7388c4469550aa049b45cab86ad}} 
+constexpr {\bfseries Integer} (const char $\ast$number)
+\item 
+\mbox{\Hypertarget{classInteger_a239651008cf8e0f534f4daa39ac7c380}\label{classInteger_a239651008cf8e0f534f4daa39ac7c380}} 
+{\footnotesize template$<$typename \+\_\+T , typename std\+::enable\+\_\+if$<$!std\+::\+\_\+\+\_\+is\+\_\+one\+\_\+of$<$ \+\_\+\+T, const char $\ast$, char $\ast$ $>$\+::value, int $>$\+::type  = 0$>$ }\\{\bfseries Integer} (\+\_\+T number)
+\item 
+\mbox{\Hypertarget{classInteger_a6332294204170b4208d70db178c9cfe0}\label{classInteger_a6332294204170b4208d70db178c9cfe0}} 
+constexpr const \mbox{\hyperlink{classInteger_1_1iterator}{iterator}} {\bfseries begin} () const
+\item 
+\mbox{\Hypertarget{classInteger_ab5977576dd095675bec2e1d866483287}\label{classInteger_ab5977576dd095675bec2e1d866483287}} 
+constexpr const \mbox{\hyperlink{classInteger_1_1iterator}{iterator}} {\bfseries end} () const
+\item 
+\mbox{\Hypertarget{classInteger_a9bc0a5ed4a3d3f56c8ba6b9c9506bd2e}\label{classInteger_a9bc0a5ed4a3d3f56c8ba6b9c9506bd2e}} 
+constexpr bool {\bfseries operator!} () const
+\item 
+\mbox{\Hypertarget{classInteger_a99eca7fa99a5aa605d6aaf4b8cf9c501}\label{classInteger_a99eca7fa99a5aa605d6aaf4b8cf9c501}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_a14248a1749869ffa5449c142f646cbf9}\label{classInteger_a14248a1749869ffa5449c142f646cbf9}} 
+constexpr bool {\bfseries operator!=} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_a1d88505d57e29bfc052599703875c805}\label{classInteger_a1d88505d57e29bfc052599703875c805}} 
+constexpr bool {\bfseries operator$<$} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_a0ad9285c96dcf85f1e5d865cbdf65138}\label{classInteger_a0ad9285c96dcf85f1e5d865cbdf65138}} 
+constexpr bool {\bfseries operator$>$} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_a69a7de64a0b5bc2de40a3a40de08c05a}\label{classInteger_a69a7de64a0b5bc2de40a3a40de08c05a}} 
+constexpr bool {\bfseries operator$<$=} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_acee8e76beee0e23471cdcb005dc7e0b5}\label{classInteger_acee8e76beee0e23471cdcb005dc7e0b5}} 
+constexpr bool {\bfseries operator$>$=} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_a13cd78f009ebfe7c2f5a1a1f7d84e88d}\label{classInteger_a13cd78f009ebfe7c2f5a1a1f7d84e88d}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator+} ()
+\item 
+\mbox{\Hypertarget{classInteger_a85d1f1e0d32119849a5ca1aa2507e680}\label{classInteger_a85d1f1e0d32119849a5ca1aa2507e680}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator+} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_a59585097399c1161ab71ff90b8f31253}\label{classInteger_a59585097399c1161ab71ff90b8f31253}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator+=} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number)
+\item 
+\mbox{\Hypertarget{classInteger_a556f64213a1a0a5270db625713a41152}\label{classInteger_a556f64213a1a0a5270db625713a41152}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator-\/} () const
+\item 
+\mbox{\Hypertarget{classInteger_a4632ed98117c064cbee8f594203979da}\label{classInteger_a4632ed98117c064cbee8f594203979da}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator-\/} (\mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ number) const
+\item 
+\mbox{\Hypertarget{classInteger_ac207683e59659292b6f7091ea57040b9}\label{classInteger_ac207683e59659292b6f7091ea57040b9}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator-\/=} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number)
+\item 
+\mbox{\Hypertarget{classInteger_ad3cb06c7f03f2756d282e15f5d611ecb}\label{classInteger_ad3cb06c7f03f2756d282e15f5d611ecb}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator$\ast$} (\mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_a7c56aff66fb97798585fa44f492c6bc3}\label{classInteger_a7c56aff66fb97798585fa44f492c6bc3}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator$\ast$=} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number)
+\item 
+\mbox{\Hypertarget{classInteger_acb0057bf071da328ae1d6455d4b989fd}\label{classInteger_acb0057bf071da328ae1d6455d4b989fd}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator/} (\mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_a1ad7cec50d5d409ce0b4265102c0aff6}\label{classInteger_a1ad7cec50d5d409ce0b4265102c0aff6}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator/=} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number)
+\item 
+\mbox{\Hypertarget{classInteger_ad0c2504bef4c673cfd1dccd27ada099d}\label{classInteger_ad0c2504bef4c673cfd1dccd27ada099d}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator\%} (\mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_ae28aa1669de3c86b962415d6499d1983}\label{classInteger_ae28aa1669de3c86b962415d6499d1983}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator\%=} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number)
+\item 
+\mbox{\Hypertarget{classInteger_a02cf1337f7205dd26b702381ceff300b}\label{classInteger_a02cf1337f7205dd26b702381ceff300b}} 
+void {\bfseries set\+INF} ()
+\item 
+\mbox{\Hypertarget{classInteger_a5e193fcff74187dcd0ca8b7b60465f73}\label{classInteger_a5e193fcff74187dcd0ca8b7b60465f73}} 
+constexpr size\+\_\+t {\bfseries bits\+\_\+clz} () const
+\item 
+\mbox{\Hypertarget{classInteger_a8c8280c2f95710bad1505973742dc3eb}\label{classInteger_a8c8280c2f95710bad1505973742dc3eb}} 
+constexpr size\+\_\+t {\bfseries bits\+\_\+ctz} () const
+\item 
+\mbox{\Hypertarget{classInteger_a3e0266a192c5835ae4b23b0afdcebce6}\label{classInteger_a3e0266a192c5835ae4b23b0afdcebce6}} 
+constexpr size\+\_\+t {\bfseries bits\+\_\+popcount} () const
+\item 
+\mbox{\Hypertarget{classInteger_a9d7afc8dbed63dc3e32d0a8acd9d7b41}\label{classInteger_a9d7afc8dbed63dc3e32d0a8acd9d7b41}} 
+constexpr bool {\bfseries bits\+\_\+parity} () const
+\item 
+\mbox{\Hypertarget{classInteger_abc6baf1a4cb88221903c1726b127dc71}\label{classInteger_abc6baf1a4cb88221903c1726b127dc71}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator$\sim$} () const
+\item 
+\mbox{\Hypertarget{classInteger_a061c9760befd833e46cbb404ca97ecba}\label{classInteger_a061c9760befd833e46cbb404ca97ecba}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator\&} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_a0ced038f847c12b79093544fa46b63d7}\label{classInteger_a0ced038f847c12b79093544fa46b63d7}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator\&=} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number)
+\item 
+\mbox{\Hypertarget{classInteger_a747ee24b3ad1cf1c6f37a3fd47c566a4}\label{classInteger_a747ee24b3ad1cf1c6f37a3fd47c566a4}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator$\vert$} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_a89ad6d72f227b789814bf3fc23882391}\label{classInteger_a89ad6d72f227b789814bf3fc23882391}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator$\vert$=} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number)
+\item 
+\mbox{\Hypertarget{classInteger_aaedd52bcba4b6864a40f860aa135476a}\label{classInteger_aaedd52bcba4b6864a40f860aa135476a}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator$^\wedge$} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_a9d5db5fc6759ce2552d7e8e293c02dc8}\label{classInteger_a9d5db5fc6759ce2552d7e8e293c02dc8}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator$^\wedge$=} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number)
+\item 
+\mbox{\Hypertarget{classInteger_abc0a2400cbed499adacfcebb4e9e00c7}\label{classInteger_abc0a2400cbed499adacfcebb4e9e00c7}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator$>$$>$} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_a064267f12d4d89d753d619138d62400f}\label{classInteger_a064267f12d4d89d753d619138d62400f}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator$>$$>$=} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number)
+\item 
+\mbox{\Hypertarget{classInteger_a2477e4af2b0eaabec073eb14844e8d43}\label{classInteger_a2477e4af2b0eaabec073eb14844e8d43}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator$<$$<$} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number) const
+\item 
+\mbox{\Hypertarget{classInteger_a4809601a264bcd7f018689273b57a1e5}\label{classInteger_a4809601a264bcd7f018689273b57a1e5}} 
+constexpr \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries operator$<$$<$=} (const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number)
+\item 
+\mbox{\Hypertarget{classInteger_aba350943db2d277ca9cef0818586e62d}\label{classInteger_aba350943db2d277ca9cef0818586e62d}} 
+constexpr const char $\ast$ {\bfseries to\+\_\+string} () const
+\item 
+\mbox{\Hypertarget{classInteger_a9e64855d80efc66ec6ec99c0b3f2cc9d}\label{classInteger_a9e64855d80efc66ec6ec99c0b3f2cc9d}} 
+constexpr unsigned long long int {\bfseries to\+\_\+ullong} () const
+\item 
+\mbox{\Hypertarget{classInteger_a3163fd607d6a3ef80cee44ee9615d532}\label{classInteger_a3163fd607d6a3ef80cee44ee9615d532}} 
+constexpr const char $\ast$ {\bfseries to\+\_\+sbits} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classInteger_a446cbcb610137a06c0deaedcbe773300}\label{classInteger_a446cbcb610137a06c0deaedcbe773300}} 
+constexpr static \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \& {\bfseries INF} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classInteger_ac2aea456acd562449cc4821fc86320ce}\label{classInteger_ac2aea456acd562449cc4821fc86320ce}} 
+std\+::istream \& {\bfseries operator$>$$>$} (std\+::istream \&is, \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number)
+\item 
+\mbox{\Hypertarget{classInteger_a23eeae8cd6a549cc0b82fd2afe677cb4}\label{classInteger_a23eeae8cd6a549cc0b82fd2afe677cb4}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{classInteger}{Integer}}$<$ BITS $>$ \&number)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+maths/multiprecision.\+hpp\end{DoxyCompactItemize}
