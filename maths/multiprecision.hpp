@@ -97,7 +97,7 @@ template<size_t BITS> class Integer {
         if (num1.none()) return num1;
         if (num2.count() == 1) return num1&__sub__(num2, std::bitset<N>(1));
         if (num1 == num2) return std::bitset<N>();
-        std::bitset<N> Q, R; 
+        std::bitset<N> R; 
         for (size_t i = num1.size() - 1; ; i--) { 
             R = R << 1, R[0] = num1[i]; 
             if (__cmp__(R, num2) != 1) R = __sub__(R, num2); 
@@ -427,8 +427,11 @@ template<size_t BITS> class Integer {
         return bits.to_ullong();
     }
 
-    inline constexpr void print_bits() const {
-        std::cout << sign << bits << std::endl;
+    inline constexpr const char* to_sbits() const {
+        char* ds = new char[BITS+2]; 
+        memcpy(ds+1, bits.to_string().c_str(), BITS+1);
+        *ds = sign ? '1': '0';
+        return ds;
     }
 
     friend std::istream& operator>>(std::istream& is, Integer<BITS>& number) {
