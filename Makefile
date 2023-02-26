@@ -2,7 +2,7 @@ LDir=libs
 SDir=src
 
 
-one_shot: 
+one_shot_install: 
 	@make -s build 
 	@make -s install 
 	@make -s clean
