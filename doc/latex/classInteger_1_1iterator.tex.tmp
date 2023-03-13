@@ -1,56 +1,56 @@
-\hypertarget{classInteger_1_1iterator}{}\doxysection{Integer$<$ BITS $>$\+::iterator Class Reference}
-\label{classInteger_1_1iterator}\index{Integer$<$ BITS $>$::iterator@{Integer$<$ BITS $>$::iterator}}
+\hypertarget{classInteger_1_1iterator}{}\doxysection{Integer$<$ BITS, \+\_\+\+\_\+unsigned\+\_\+\+\_\+ $>$\+::iterator Class Reference}
+\label{classInteger_1_1iterator}\index{Integer$<$ BITS, \_\_unsigned\_\_ $>$::iterator@{Integer$<$ BITS, \_\_unsigned\_\_ $>$::iterator}}
 
 
-Inheritance diagram for Integer$<$ BITS $>$\+::iterator\+:
+Inheritance diagram for Integer$<$ BITS, \+\_\+\+\_\+unsigned\+\_\+\+\_\+ $>$\+::iterator\+:
 % FIG 0
 
 
-Collaboration diagram for Integer$<$ BITS $>$\+::iterator\+:
+Collaboration diagram for Integer$<$ BITS, \+\_\+\+\_\+unsigned\+\_\+\+\_\+ $>$\+::iterator\+:
 % FIG 1
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classInteger_1_1iterator_a8456a2d82765dedbdb15238b07496e73}\label{classInteger_1_1iterator_a8456a2d82765dedbdb15238b07496e73}} 
+\mbox{\Hypertarget{classInteger_1_1iterator_ae564d0f28cfa1424a9d48de7b84fe89f}\label{classInteger_1_1iterator_ae564d0f28cfa1424a9d48de7b84fe89f}} 
 {\bfseries iterator} (const void $\ast$p)
 \item 
-\mbox{\Hypertarget{classInteger_1_1iterator_a0d488eccfdc00fb729a23879f67ede32}\label{classInteger_1_1iterator_a0d488eccfdc00fb729a23879f67ede32}} 
+\mbox{\Hypertarget{classInteger_1_1iterator_af79244aa5031f4f3ce29a89201227666}\label{classInteger_1_1iterator_af79244aa5031f4f3ce29a89201227666}} 
 {\bfseries iterator} (const \mbox{\hyperlink{classInteger_1_1iterator}{iterator}} \&other)
 \item 
-\mbox{\Hypertarget{classInteger_1_1iterator_a2c842db7d0776bc907da3f56dbf41403}\label{classInteger_1_1iterator_a2c842db7d0776bc907da3f56dbf41403}} 
+\mbox{\Hypertarget{classInteger_1_1iterator_af0bfdd13dea4da7b7034c21b409fa83f}\label{classInteger_1_1iterator_af0bfdd13dea4da7b7034c21b409fa83f}} 
 const size\+\_\+t \& {\bfseries operator$\ast$} () const
 \item 
-\mbox{\Hypertarget{classInteger_1_1iterator_a9240c191c67634d70c7008d91a6c8567}\label{classInteger_1_1iterator_a9240c191c67634d70c7008d91a6c8567}} 
+\mbox{\Hypertarget{classInteger_1_1iterator_a6020617e2119394aed24a8ed34668cfa}\label{classInteger_1_1iterator_a6020617e2119394aed24a8ed34668cfa}} 
 \mbox{\hyperlink{classInteger_1_1iterator}{iterator}} \& {\bfseries operator++} (int)
 \item 
-\mbox{\Hypertarget{classInteger_1_1iterator_a55f188af5c3324366df0c0aaf87ca42c}\label{classInteger_1_1iterator_a55f188af5c3324366df0c0aaf87ca42c}} 
+\mbox{\Hypertarget{classInteger_1_1iterator_aecc3a23cdd4fe3baf721dc499fc8bb2c}\label{classInteger_1_1iterator_aecc3a23cdd4fe3baf721dc499fc8bb2c}} 
 \mbox{\hyperlink{classInteger_1_1iterator}{iterator}} \& {\bfseries operator-\/-\/} (int)
 \item 
-\mbox{\Hypertarget{classInteger_1_1iterator_a5bac150b3cb8216db52824d5c19baf54}\label{classInteger_1_1iterator_a5bac150b3cb8216db52824d5c19baf54}} 
+\mbox{\Hypertarget{classInteger_1_1iterator_a54e02a87c8c07495e6d2a1fa55b6ff1a}\label{classInteger_1_1iterator_a54e02a87c8c07495e6d2a1fa55b6ff1a}} 
 void {\bfseries operator++} ()
 \item 
-\mbox{\Hypertarget{classInteger_1_1iterator_a1d01cf6a708e53a1c523a1aba058cb9a}\label{classInteger_1_1iterator_a1d01cf6a708e53a1c523a1aba058cb9a}} 
+\mbox{\Hypertarget{classInteger_1_1iterator_a8a30935b1c24598b0baaca10bab6535b}\label{classInteger_1_1iterator_a8a30935b1c24598b0baaca10bab6535b}} 
 void {\bfseries operator-\/-\/} ()
 \item 
-\mbox{\Hypertarget{classInteger_1_1iterator_a709d07615c5c8666d63949c0194fa604}\label{classInteger_1_1iterator_a709d07615c5c8666d63949c0194fa604}} 
+\mbox{\Hypertarget{classInteger_1_1iterator_abd7be629be8214ab7e26a3eaa6c589cd}\label{classInteger_1_1iterator_abd7be629be8214ab7e26a3eaa6c589cd}} 
 bool {\bfseries operator!=} (const \mbox{\hyperlink{classInteger_1_1iterator}{iterator}} \&other) const
 \item 
-\mbox{\Hypertarget{classInteger_1_1iterator_a7413105287a95fce29ba9b814166134f}\label{classInteger_1_1iterator_a7413105287a95fce29ba9b814166134f}} 
+\mbox{\Hypertarget{classInteger_1_1iterator_a048c589502a754605536755634b14a5a}\label{classInteger_1_1iterator_a048c589502a754605536755634b14a5a}} 
 bool {\bfseries operator==} (const \mbox{\hyperlink{classInteger_1_1iterator}{iterator}} \&other) const
 \item 
-\mbox{\Hypertarget{classInteger_1_1iterator_ade21901c50dad8291c8adc27047de71b}\label{classInteger_1_1iterator_ade21901c50dad8291c8adc27047de71b}} 
+\mbox{\Hypertarget{classInteger_1_1iterator_a665252b4434ae46fb21a9836a2fbeba3}\label{classInteger_1_1iterator_a665252b4434ae46fb21a9836a2fbeba3}} 
 bool {\bfseries operator$<$} (const \mbox{\hyperlink{classInteger_1_1iterator}{iterator}} \&other) const
 \item 
-\mbox{\Hypertarget{classInteger_1_1iterator_a5f850a1accb781bdde8a3ae937d9cd35}\label{classInteger_1_1iterator_a5f850a1accb781bdde8a3ae937d9cd35}} 
+\mbox{\Hypertarget{classInteger_1_1iterator_a03f10168fbb04d562df62f0142a6578a}\label{classInteger_1_1iterator_a03f10168fbb04d562df62f0142a6578a}} 
 bool {\bfseries operator$>$} (const \mbox{\hyperlink{classInteger_1_1iterator}{iterator}} \&other) const
 \item 
-\mbox{\Hypertarget{classInteger_1_1iterator_a5083102717c575cb61abed9a48796958}\label{classInteger_1_1iterator_a5083102717c575cb61abed9a48796958}} 
+\mbox{\Hypertarget{classInteger_1_1iterator_abc2e209f7b0fcb859d80b51666b27c5a}\label{classInteger_1_1iterator_abc2e209f7b0fcb859d80b51666b27c5a}} 
 bool {\bfseries operator$<$=} (const \mbox{\hyperlink{classInteger_1_1iterator}{iterator}} \&other) const
 \item 
-\mbox{\Hypertarget{classInteger_1_1iterator_a6b0d322d22c33423bd0c1941f91c42f8}\label{classInteger_1_1iterator_a6b0d322d22c33423bd0c1941f91c42f8}} 
+\mbox{\Hypertarget{classInteger_1_1iterator_ae43649207471bc8d265ee6bc5cb26e4f}\label{classInteger_1_1iterator_ae43649207471bc8d265ee6bc5cb26e4f}} 
 bool {\bfseries operator$>$=} (const \mbox{\hyperlink{classInteger_1_1iterator}{iterator}} \&other) const
 \item 
-\mbox{\Hypertarget{classInteger_1_1iterator_a365177217cd1699a7f6b87b84d7b9bef}\label{classInteger_1_1iterator_a365177217cd1699a7f6b87b84d7b9bef}} 
+\mbox{\Hypertarget{classInteger_1_1iterator_ab92bf0479446fb96211920511e0c64f3}\label{classInteger_1_1iterator_ab92bf0479446fb96211920511e0c64f3}} 
 int {\bfseries operator-\/} (const \mbox{\hyperlink{classInteger_1_1iterator}{iterator}} \&other) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Friends}

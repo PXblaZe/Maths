@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=9"/>
 		<meta name="generator" content="Doxygen 1.9.1"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<title>Maths: Integer&lt; BITS &gt; Class Template Reference</title>
+		<title>Maths: Integer&lt; BITS, __unsigned__ &gt; Class Template Reference</title>
 		<link href="tabs.css" rel="stylesheet" type="text/css"/>
 		<script type="text/javascript" src="jquery.js"></script>
 		<script type="text/javascript" src="dynsections.js"></script>
@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('classInteger.html',''); initResizable(
 <a href="#friends">Friends</a> &#124;
 <a href="classInteger-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Integer&lt; BITS &gt; Class Template Reference</div>  </div>
+<div class="title">Integer&lt; BITS, __unsigned__ &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
@@ -100,158 +100,170 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae3dd0dc4332a174a4a8b0ad7be7c834d"><td class="memItemLeft" align="right" valign="top"><a id="ae3dd0dc4332a174a4a8b0ad7be7c834d"></a>
-constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>Integer</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number)</td></tr>
-<tr class="separator:ae3dd0dc4332a174a4a8b0ad7be7c834d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c9d09f4b3931fed7e2ed008edea3edf"><td class="memTemplParams" colspan="2"><a id="a7c9d09f4b3931fed7e2ed008edea3edf"></a>
-template&lt;size_t NB&gt; </td></tr>
-<tr class="memitem:a7c9d09f4b3931fed7e2ed008edea3edf"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Integer</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; NB &gt; &amp;number)</td></tr>
-<tr class="separator:a7c9d09f4b3931fed7e2ed008edea3edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ca140fdc5ceb388a43852d435d21cf4"><td class="memItemLeft" align="right" valign="top"><a id="a2ca140fdc5ceb388a43852d435d21cf4"></a>
+<tr class="memitem:a3cd973c72c235c53375af73977925a8d"><td class="memItemLeft" align="right" valign="top"><a id="a3cd973c72c235c53375af73977925a8d"></a>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>Integer</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number)</td></tr>
+<tr class="separator:a3cd973c72c235c53375af73977925a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45b883ad73eba03b6a8e44ede8bee4b6"><td class="memTemplParams" colspan="2"><a id="a45b883ad73eba03b6a8e44ede8bee4b6"></a>
+template&lt;size_t Nb, bool __Unsigned__&gt; </td></tr>
+<tr class="memitem:a45b883ad73eba03b6a8e44ede8bee4b6"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Integer</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; Nb, __Unsigned__ &gt; &amp;number)</td></tr>
+<tr class="separator:a45b883ad73eba03b6a8e44ede8bee4b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a991f1a938e4a09f2dbf6dca73694c680"><td class="memItemLeft" align="right" valign="top"><a id="a991f1a938e4a09f2dbf6dca73694c680"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Integer</b> (const std::bitset&lt; BITS &gt; &amp;_b)</td></tr>
-<tr class="separator:a2ca140fdc5ceb388a43852d435d21cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1720d7388c4469550aa049b45cab86ad"><td class="memItemLeft" align="right" valign="top"><a id="a1720d7388c4469550aa049b45cab86ad"></a>
+<tr class="separator:a991f1a938e4a09f2dbf6dca73694c680"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15d32368e9c160f220ae8097e70f2fda"><td class="memItemLeft" align="right" valign="top"><a id="a15d32368e9c160f220ae8097e70f2fda"></a>
 constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>Integer</b> (const char *number)</td></tr>
-<tr class="separator:a1720d7388c4469550aa049b45cab86ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a239651008cf8e0f534f4daa39ac7c380"><td class="memTemplParams" colspan="2"><a id="a239651008cf8e0f534f4daa39ac7c380"></a>
+<tr class="separator:a15d32368e9c160f220ae8097e70f2fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2ef28f1e022aedba5312882b5a0ac4f"><td class="memTemplParams" colspan="2"><a id="ac2ef28f1e022aedba5312882b5a0ac4f"></a>
 template&lt;typename _T , typename std::enable_if&lt;!std::__is_one_of&lt; _T, const char *, char * &gt;::value, int &gt;::type  = 0&gt; </td></tr>
-<tr class="memitem:a239651008cf8e0f534f4daa39ac7c380"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Integer</b> (_T number)</td></tr>
-<tr class="separator:a239651008cf8e0f534f4daa39ac7c380"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6332294204170b4208d70db178c9cfe0"><td class="memItemLeft" align="right" valign="top"><a id="a6332294204170b4208d70db178c9cfe0"></a>
+<tr class="memitem:ac2ef28f1e022aedba5312882b5a0ac4f"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Integer</b> (_T number)</td></tr>
+<tr class="separator:ac2ef28f1e022aedba5312882b5a0ac4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c073d4d761f8e76e6185a56d2047f3f"><td class="memItemLeft" align="right" valign="top"><a id="a5c073d4d761f8e76e6185a56d2047f3f"></a>
 constexpr const <a class="el" href="classInteger_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () const</td></tr>
-<tr class="separator:a6332294204170b4208d70db178c9cfe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5977576dd095675bec2e1d866483287"><td class="memItemLeft" align="right" valign="top"><a id="ab5977576dd095675bec2e1d866483287"></a>
+<tr class="separator:a5c073d4d761f8e76e6185a56d2047f3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1053f1de65ea1716a24043b0cc775875"><td class="memItemLeft" align="right" valign="top"><a id="a1053f1de65ea1716a24043b0cc775875"></a>
 constexpr const <a class="el" href="classInteger_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const</td></tr>
-<tr class="separator:ab5977576dd095675bec2e1d866483287"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bc0a5ed4a3d3f56c8ba6b9c9506bd2e"><td class="memItemLeft" align="right" valign="top"><a id="a9bc0a5ed4a3d3f56c8ba6b9c9506bd2e"></a>
+<tr class="separator:a1053f1de65ea1716a24043b0cc775875"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa25fb24cffa777184a282f73d2370a32"><td class="memItemLeft" align="right" valign="top"><a id="aa25fb24cffa777184a282f73d2370a32"></a>
 constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!</b> () const</td></tr>
-<tr class="separator:a9bc0a5ed4a3d3f56c8ba6b9c9506bd2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99eca7fa99a5aa605d6aaf4b8cf9c501"><td class="memItemLeft" align="right" valign="top"><a id="a99eca7fa99a5aa605d6aaf4b8cf9c501"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:a99eca7fa99a5aa605d6aaf4b8cf9c501"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14248a1749869ffa5449c142f646cbf9"><td class="memItemLeft" align="right" valign="top"><a id="a14248a1749869ffa5449c142f646cbf9"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:a14248a1749869ffa5449c142f646cbf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d88505d57e29bfc052599703875c805"><td class="memItemLeft" align="right" valign="top"><a id="a1d88505d57e29bfc052599703875c805"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:a1d88505d57e29bfc052599703875c805"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ad9285c96dcf85f1e5d865cbdf65138"><td class="memItemLeft" align="right" valign="top"><a id="a0ad9285c96dcf85f1e5d865cbdf65138"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:a0ad9285c96dcf85f1e5d865cbdf65138"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69a7de64a0b5bc2de40a3a40de08c05a"><td class="memItemLeft" align="right" valign="top"><a id="a69a7de64a0b5bc2de40a3a40de08c05a"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:a69a7de64a0b5bc2de40a3a40de08c05a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acee8e76beee0e23471cdcb005dc7e0b5"><td class="memItemLeft" align="right" valign="top"><a id="acee8e76beee0e23471cdcb005dc7e0b5"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:acee8e76beee0e23471cdcb005dc7e0b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13cd78f009ebfe7c2f5a1a1f7d84e88d"><td class="memItemLeft" align="right" valign="top"><a id="a13cd78f009ebfe7c2f5a1a1f7d84e88d"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> ()</td></tr>
-<tr class="separator:a13cd78f009ebfe7c2f5a1a1f7d84e88d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85d1f1e0d32119849a5ca1aa2507e680"><td class="memItemLeft" align="right" valign="top"><a id="a85d1f1e0d32119849a5ca1aa2507e680"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:a85d1f1e0d32119849a5ca1aa2507e680"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59585097399c1161ab71ff90b8f31253"><td class="memItemLeft" align="right" valign="top"><a id="a59585097399c1161ab71ff90b8f31253"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number)</td></tr>
-<tr class="separator:a59585097399c1161ab71ff90b8f31253"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a556f64213a1a0a5270db625713a41152"><td class="memItemLeft" align="right" valign="top"><a id="a556f64213a1a0a5270db625713a41152"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> () const</td></tr>
-<tr class="separator:a556f64213a1a0a5270db625713a41152"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4632ed98117c064cbee8f594203979da"><td class="memItemLeft" align="right" valign="top"><a id="a4632ed98117c064cbee8f594203979da"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (<a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; number) const</td></tr>
-<tr class="separator:a4632ed98117c064cbee8f594203979da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac207683e59659292b6f7091ea57040b9"><td class="memItemLeft" align="right" valign="top"><a id="ac207683e59659292b6f7091ea57040b9"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number)</td></tr>
-<tr class="separator:ac207683e59659292b6f7091ea57040b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3cb06c7f03f2756d282e15f5d611ecb"><td class="memItemLeft" align="right" valign="top"><a id="ad3cb06c7f03f2756d282e15f5d611ecb"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (<a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:ad3cb06c7f03f2756d282e15f5d611ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c56aff66fb97798585fa44f492c6bc3"><td class="memItemLeft" align="right" valign="top"><a id="a7c56aff66fb97798585fa44f492c6bc3"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number)</td></tr>
-<tr class="separator:a7c56aff66fb97798585fa44f492c6bc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb0057bf071da328ae1d6455d4b989fd"><td class="memItemLeft" align="right" valign="top"><a id="acb0057bf071da328ae1d6455d4b989fd"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator/</b> (<a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:acb0057bf071da328ae1d6455d4b989fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ad7cec50d5d409ce0b4265102c0aff6"><td class="memItemLeft" align="right" valign="top"><a id="a1ad7cec50d5d409ce0b4265102c0aff6"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator/=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number)</td></tr>
-<tr class="separator:a1ad7cec50d5d409ce0b4265102c0aff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0c2504bef4c673cfd1dccd27ada099d"><td class="memItemLeft" align="right" valign="top"><a id="ad0c2504bef4c673cfd1dccd27ada099d"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator%</b> (<a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:ad0c2504bef4c673cfd1dccd27ada099d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae28aa1669de3c86b962415d6499d1983"><td class="memItemLeft" align="right" valign="top"><a id="ae28aa1669de3c86b962415d6499d1983"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator%=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number)</td></tr>
-<tr class="separator:ae28aa1669de3c86b962415d6499d1983"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02cf1337f7205dd26b702381ceff300b"><td class="memItemLeft" align="right" valign="top"><a id="a02cf1337f7205dd26b702381ceff300b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setINF</b> ()</td></tr>
-<tr class="separator:a02cf1337f7205dd26b702381ceff300b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e193fcff74187dcd0ca8b7b60465f73"><td class="memItemLeft" align="right" valign="top"><a id="a5e193fcff74187dcd0ca8b7b60465f73"></a>
+<tr class="separator:aa25fb24cffa777184a282f73d2370a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96633918d7d604d632611c5fe7065140"><td class="memItemLeft" align="right" valign="top"><a id="a96633918d7d604d632611c5fe7065140"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number) const</td></tr>
+<tr class="separator:a96633918d7d604d632611c5fe7065140"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ae91685a302357201945344ad52e5d2"><td class="memItemLeft" align="right" valign="top"><a id="a0ae91685a302357201945344ad52e5d2"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number) const</td></tr>
+<tr class="separator:a0ae91685a302357201945344ad52e5d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ad7e10ce11d8120617c75d11caada16"><td class="memItemLeft" align="right" valign="top"><a id="a3ad7e10ce11d8120617c75d11caada16"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number) const</td></tr>
+<tr class="separator:a3ad7e10ce11d8120617c75d11caada16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2329b0d51dff53ed338f63fa6b565eed"><td class="memItemLeft" align="right" valign="top"><a id="a2329b0d51dff53ed338f63fa6b565eed"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number) const</td></tr>
+<tr class="separator:a2329b0d51dff53ed338f63fa6b565eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d432b7c98fb712b5b98aed7def5588d"><td class="memItemLeft" align="right" valign="top"><a id="a2d432b7c98fb712b5b98aed7def5588d"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number) const</td></tr>
+<tr class="separator:a2d432b7c98fb712b5b98aed7def5588d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbe17e6ed365290c01a28a8e729f226f"><td class="memItemLeft" align="right" valign="top"><a id="afbe17e6ed365290c01a28a8e729f226f"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number) const</td></tr>
+<tr class="separator:afbe17e6ed365290c01a28a8e729f226f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a421594114f996d51e1ab8083db8a50ab"><td class="memItemLeft" align="right" valign="top"><a id="a421594114f996d51e1ab8083db8a50ab"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> ()</td></tr>
+<tr class="separator:a421594114f996d51e1ab8083db8a50ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0129e47bf92f155e5bb6132f96a8c0ec"><td class="memItemLeft" align="right" valign="top"><a id="a0129e47bf92f155e5bb6132f96a8c0ec"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number) const</td></tr>
+<tr class="separator:a0129e47bf92f155e5bb6132f96a8c0ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab448fc1f1354f3c38f658f0e4dd91d2c"><td class="memItemLeft" align="right" valign="top"><a id="ab448fc1f1354f3c38f658f0e4dd91d2c"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number)</td></tr>
+<tr class="separator:ab448fc1f1354f3c38f658f0e4dd91d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a786734ced29ed58254109fc58bc9f7ae"><td class="memItemLeft" align="right" valign="top"><a id="a786734ced29ed58254109fc58bc9f7ae"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> ()</td></tr>
+<tr class="separator:a786734ced29ed58254109fc58bc9f7ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c75ab997bdb0988794b02c74b7bfdf0"><td class="memItemLeft" align="right" valign="top"><a id="a7c75ab997bdb0988794b02c74b7bfdf0"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (<a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; number) const</td></tr>
+<tr class="separator:a7c75ab997bdb0988794b02c74b7bfdf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6ada780e5147515a5bc37102c170985"><td class="memItemLeft" align="right" valign="top"><a id="aa6ada780e5147515a5bc37102c170985"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number)</td></tr>
+<tr class="separator:aa6ada780e5147515a5bc37102c170985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b59c1fa5aa343b534f8afab35d18869"><td class="memItemLeft" align="right" valign="top"><a id="a3b59c1fa5aa343b534f8afab35d18869"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (<a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; number)</td></tr>
+<tr class="separator:a3b59c1fa5aa343b534f8afab35d18869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4cc0a9a27a64e0309455a7dd5d7a2a7"><td class="memItemLeft" align="right" valign="top"><a id="ac4cc0a9a27a64e0309455a7dd5d7a2a7"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number)</td></tr>
+<tr class="separator:ac4cc0a9a27a64e0309455a7dd5d7a2a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a520416e275e849b3a74544c1227bef4e"><td class="memItemLeft" align="right" valign="top"><a id="a520416e275e849b3a74544c1227bef4e"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator/</b> (<a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; number)</td></tr>
+<tr class="separator:a520416e275e849b3a74544c1227bef4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12fa9bebf3e323469229e3c459723eb0"><td class="memItemLeft" align="right" valign="top"><a id="a12fa9bebf3e323469229e3c459723eb0"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator/=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number)</td></tr>
+<tr class="separator:a12fa9bebf3e323469229e3c459723eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30e6bb7e48e91a11cabaf441359350a2"><td class="memItemLeft" align="right" valign="top"><a id="a30e6bb7e48e91a11cabaf441359350a2"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator%</b> (<a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; number)</td></tr>
+<tr class="separator:a30e6bb7e48e91a11cabaf441359350a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70ffc14657bda890b3f52131c10733bc"><td class="memItemLeft" align="right" valign="top"><a id="a70ffc14657bda890b3f52131c10733bc"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator%=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number)</td></tr>
+<tr class="separator:a70ffc14657bda890b3f52131c10733bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a317706f6bb19c18e6b9ceba16d136699"><td class="memItemLeft" align="right" valign="top"><a id="a317706f6bb19c18e6b9ceba16d136699"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_INF</b> ()</td></tr>
+<tr class="separator:a317706f6bb19c18e6b9ceba16d136699"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e1facd363746ffb27d7f9be126db40e"><td class="memItemLeft" align="right" valign="top"><a id="a1e1facd363746ffb27d7f9be126db40e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_negINF</b> ()</td></tr>
+<tr class="separator:a1e1facd363746ffb27d7f9be126db40e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a040a5aecc77becb01173fe8f3d3018c2"><td class="memItemLeft" align="right" valign="top"><a id="a040a5aecc77becb01173fe8f3d3018c2"></a>
 constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>bits_clz</b> () const</td></tr>
-<tr class="separator:a5e193fcff74187dcd0ca8b7b60465f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c8280c2f95710bad1505973742dc3eb"><td class="memItemLeft" align="right" valign="top"><a id="a8c8280c2f95710bad1505973742dc3eb"></a>
+<tr class="separator:a040a5aecc77becb01173fe8f3d3018c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af82c654306ae1a6f1d450647b1649c3d"><td class="memItemLeft" align="right" valign="top"><a id="af82c654306ae1a6f1d450647b1649c3d"></a>
 constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>bits_ctz</b> () const</td></tr>
-<tr class="separator:a8c8280c2f95710bad1505973742dc3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e0266a192c5835ae4b23b0afdcebce6"><td class="memItemLeft" align="right" valign="top"><a id="a3e0266a192c5835ae4b23b0afdcebce6"></a>
+<tr class="separator:af82c654306ae1a6f1d450647b1649c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8303deff51ee76b4851a9b7b78a860b9"><td class="memItemLeft" align="right" valign="top"><a id="a8303deff51ee76b4851a9b7b78a860b9"></a>
 constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>bits_popcount</b> () const</td></tr>
-<tr class="separator:a3e0266a192c5835ae4b23b0afdcebce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d7afc8dbed63dc3e32d0a8acd9d7b41"><td class="memItemLeft" align="right" valign="top"><a id="a9d7afc8dbed63dc3e32d0a8acd9d7b41"></a>
+<tr class="separator:a8303deff51ee76b4851a9b7b78a860b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a061944a217ca754fc3294bb09af44e13"><td class="memItemLeft" align="right" valign="top"><a id="a061944a217ca754fc3294bb09af44e13"></a>
 constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>bits_parity</b> () const</td></tr>
-<tr class="separator:a9d7afc8dbed63dc3e32d0a8acd9d7b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc6baf1a4cb88221903c1726b127dc71"><td class="memItemLeft" align="right" valign="top"><a id="abc6baf1a4cb88221903c1726b127dc71"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator~</b> () const</td></tr>
-<tr class="separator:abc6baf1a4cb88221903c1726b127dc71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a061c9760befd833e46cbb404ca97ecba"><td class="memItemLeft" align="right" valign="top"><a id="a061c9760befd833e46cbb404ca97ecba"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&amp;</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:a061c9760befd833e46cbb404ca97ecba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ced038f847c12b79093544fa46b63d7"><td class="memItemLeft" align="right" valign="top"><a id="a0ced038f847c12b79093544fa46b63d7"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&amp;=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number)</td></tr>
-<tr class="separator:a0ced038f847c12b79093544fa46b63d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a747ee24b3ad1cf1c6f37a3fd47c566a4"><td class="memItemLeft" align="right" valign="top"><a id="a747ee24b3ad1cf1c6f37a3fd47c566a4"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator|</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:a747ee24b3ad1cf1c6f37a3fd47c566a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89ad6d72f227b789814bf3fc23882391"><td class="memItemLeft" align="right" valign="top"><a id="a89ad6d72f227b789814bf3fc23882391"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator|=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number)</td></tr>
-<tr class="separator:a89ad6d72f227b789814bf3fc23882391"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaedd52bcba4b6864a40f860aa135476a"><td class="memItemLeft" align="right" valign="top"><a id="aaedd52bcba4b6864a40f860aa135476a"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator^</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:aaedd52bcba4b6864a40f860aa135476a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d5db5fc6759ce2552d7e8e293c02dc8"><td class="memItemLeft" align="right" valign="top"><a id="a9d5db5fc6759ce2552d7e8e293c02dc8"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator^=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number)</td></tr>
-<tr class="separator:a9d5db5fc6759ce2552d7e8e293c02dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc0a2400cbed499adacfcebb4e9e00c7"><td class="memItemLeft" align="right" valign="top"><a id="abc0a2400cbed499adacfcebb4e9e00c7"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt;</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:abc0a2400cbed499adacfcebb4e9e00c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a064267f12d4d89d753d619138d62400f"><td class="memItemLeft" align="right" valign="top"><a id="a064267f12d4d89d753d619138d62400f"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt;=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number)</td></tr>
-<tr class="separator:a064267f12d4d89d753d619138d62400f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2477e4af2b0eaabec073eb14844e8d43"><td class="memItemLeft" align="right" valign="top"><a id="a2477e4af2b0eaabec073eb14844e8d43"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number) const</td></tr>
-<tr class="separator:a2477e4af2b0eaabec073eb14844e8d43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4809601a264bcd7f018689273b57a1e5"><td class="memItemLeft" align="right" valign="top"><a id="a4809601a264bcd7f018689273b57a1e5"></a>
-constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number)</td></tr>
-<tr class="separator:a4809601a264bcd7f018689273b57a1e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba350943db2d277ca9cef0818586e62d"><td class="memItemLeft" align="right" valign="top"><a id="aba350943db2d277ca9cef0818586e62d"></a>
+<tr class="separator:a061944a217ca754fc3294bb09af44e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba5aedf5864931b628ac6c55d56bbbc1"><td class="memItemLeft" align="right" valign="top"><a id="aba5aedf5864931b628ac6c55d56bbbc1"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator~</b> () const</td></tr>
+<tr class="separator:aba5aedf5864931b628ac6c55d56bbbc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e5f20479f690a19a7fef84262ebc4e5"><td class="memItemLeft" align="right" valign="top"><a id="a1e5f20479f690a19a7fef84262ebc4e5"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&amp;</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number) const</td></tr>
+<tr class="separator:a1e5f20479f690a19a7fef84262ebc4e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a780902c50f600d84387f7f53cd2fcd8f"><td class="memItemLeft" align="right" valign="top"><a id="a780902c50f600d84387f7f53cd2fcd8f"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&amp;=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number)</td></tr>
+<tr class="separator:a780902c50f600d84387f7f53cd2fcd8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a159f6e5fde4013e0b941b69f74748c8c"><td class="memItemLeft" align="right" valign="top"><a id="a159f6e5fde4013e0b941b69f74748c8c"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator|</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number) const</td></tr>
+<tr class="separator:a159f6e5fde4013e0b941b69f74748c8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a935789add92a4fd82d47c7f6e74c48fc"><td class="memItemLeft" align="right" valign="top"><a id="a935789add92a4fd82d47c7f6e74c48fc"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator|=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number)</td></tr>
+<tr class="separator:a935789add92a4fd82d47c7f6e74c48fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96abfd194388f7dbcee46aaefead6ed9"><td class="memItemLeft" align="right" valign="top"><a id="a96abfd194388f7dbcee46aaefead6ed9"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator^</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number) const</td></tr>
+<tr class="separator:a96abfd194388f7dbcee46aaefead6ed9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a410afb4a59d73637f08391db2e9edd2f"><td class="memItemLeft" align="right" valign="top"><a id="a410afb4a59d73637f08391db2e9edd2f"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator^=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number)</td></tr>
+<tr class="separator:a410afb4a59d73637f08391db2e9edd2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d649a65ba8c68f7a6b639becf37def2"><td class="memItemLeft" align="right" valign="top"><a id="a6d649a65ba8c68f7a6b639becf37def2"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt;</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number) const</td></tr>
+<tr class="separator:a6d649a65ba8c68f7a6b639becf37def2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f44eea862978d4bafa1b7a8814534a8"><td class="memItemLeft" align="right" valign="top"><a id="a6f44eea862978d4bafa1b7a8814534a8"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt;=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number)</td></tr>
+<tr class="separator:a6f44eea862978d4bafa1b7a8814534a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af66af766e4ed9ece294c3161514c9ab1"><td class="memItemLeft" align="right" valign="top"><a id="af66af766e4ed9ece294c3161514c9ab1"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number) const</td></tr>
+<tr class="separator:af66af766e4ed9ece294c3161514c9ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a265b6c5060cc4a5fba7e224dd0ae99bc"><td class="memItemLeft" align="right" valign="top"><a id="a265b6c5060cc4a5fba7e224dd0ae99bc"></a>
+constexpr <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;=</b> (const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number)</td></tr>
+<tr class="separator:a265b6c5060cc4a5fba7e224dd0ae99bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae41cfadbdfe8d2a9d496c721453c4a9f"><td class="memItemLeft" align="right" valign="top"><a id="ae41cfadbdfe8d2a9d496c721453c4a9f"></a>
 constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>to_string</b> () const</td></tr>
-<tr class="separator:aba350943db2d277ca9cef0818586e62d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e64855d80efc66ec6ec99c0b3f2cc9d"><td class="memItemLeft" align="right" valign="top"><a id="a9e64855d80efc66ec6ec99c0b3f2cc9d"></a>
+<tr class="separator:ae41cfadbdfe8d2a9d496c721453c4a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a650d612c898351f189f823c71180a444"><td class="memItemLeft" align="right" valign="top"><a id="a650d612c898351f189f823c71180a444"></a>
 constexpr unsigned long long int&#160;</td><td class="memItemRight" valign="bottom"><b>to_ullong</b> () const</td></tr>
-<tr class="separator:a9e64855d80efc66ec6ec99c0b3f2cc9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3163fd607d6a3ef80cee44ee9615d532"><td class="memItemLeft" align="right" valign="top"><a id="a3163fd607d6a3ef80cee44ee9615d532"></a>
+<tr class="separator:a650d612c898351f189f823c71180a444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8758b6871864a5998f8e14f860b30ba7"><td class="memItemLeft" align="right" valign="top"><a id="a8758b6871864a5998f8e14f860b30ba7"></a>
 constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>to_sbits</b> () const</td></tr>
-<tr class="separator:a3163fd607d6a3ef80cee44ee9615d532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a8758b6871864a5998f8e14f860b30ba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0219924e55b5ef6aa62a3d89687d1fe"><td class="memItemLeft" align="right" valign="top"><a id="ad0219924e55b5ef6aa62a3d89687d1fe"></a>
+constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>to_hexa</b> () const</td></tr>
+<tr class="separator:ad0219924e55b5ef6aa62a3d89687d1fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4811ff160351e6ce714b0fa8e8ea69d"><td class="memItemLeft" align="right" valign="top"><a id="aa4811ff160351e6ce714b0fa8e8ea69d"></a>
+constexpr std::bitset&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_bits</b> ()</td></tr>
+<tr class="separator:aa4811ff160351e6ce714b0fa8e8ea69d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a446cbcb610137a06c0deaedcbe773300"><td class="memItemLeft" align="right" valign="top"><a id="a446cbcb610137a06c0deaedcbe773300"></a>
-constexpr static <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>INF</b> ()</td></tr>
-<tr class="separator:a446cbcb610137a06c0deaedcbe773300"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2911e1a873222d8d69ba62b8d74c9527"><td class="memItemLeft" align="right" valign="top"><a id="a2911e1a873222d8d69ba62b8d74c9527"></a>
+constexpr static <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>INF</b> ()</td></tr>
+<tr class="separator:a2911e1a873222d8d69ba62b8d74c9527"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63c4a04a5caf0ae9c2ab1fae68d3ffb3"><td class="memItemLeft" align="right" valign="top"><a id="a63c4a04a5caf0ae9c2ab1fae68d3ffb3"></a>
+constexpr static <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>negINF</b> ()</td></tr>
+<tr class="separator:a63c4a04a5caf0ae9c2ab1fae68d3ffb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:ac2aea456acd562449cc4821fc86320ce"><td class="memItemLeft" align="right" valign="top"><a id="ac2aea456acd562449cc4821fc86320ce"></a>
-std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt;</b> (std::istream &amp;is, <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number)</td></tr>
-<tr class="separator:ac2aea456acd562449cc4821fc86320ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23eeae8cd6a549cc0b82fd2afe677cb4"><td class="memItemLeft" align="right" valign="top"><a id="a23eeae8cd6a549cc0b82fd2afe677cb4"></a>
-std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;os, const <a class="el" href="classInteger.html">Integer</a>&lt; BITS &gt; &amp;number)</td></tr>
-<tr class="separator:a23eeae8cd6a549cc0b82fd2afe677cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfc6c1a125780a7fd401a5242c6507b0"><td class="memItemLeft" align="right" valign="top"><a id="adfc6c1a125780a7fd401a5242c6507b0"></a>
+std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt;</b> (std::istream &amp;is, const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number)</td></tr>
+<tr class="separator:adfc6c1a125780a7fd401a5242c6507b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24abbece8f325b2832bea2d6af0ac7ea"><td class="memItemLeft" align="right" valign="top"><a id="a24abbece8f325b2832bea2d6af0ac7ea"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;os, const <a class="el" href="classInteger.html">Integer</a>&lt; BITS, __unsigned__ &gt; &amp;number)</td></tr>
+<tr class="separator:a24abbece8f325b2832bea2d6af0ac7ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>maths/<a class="el" href="multiprecision_8hpp_source.html">multiprecision.hpp</a></li>
@@ -263,7 +275,7 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
 			<ul>
 				<li class="navelem"><a class="el" href="classInteger.html">Integer</a></li>
 				<li class="footer">
-					Generated on Sun Feb 26 2023 08:52:21 for Maths by <a href="http://www.doxygen.org/index.html">
+					Generated on Mon Mar 13 2023 15:50:12 for Maths by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"
                      onerror="this.onerror=null;this.src='doxygen.svg';"/></a> 1.9.1.
 					Dark theme by <a href="http://majerle.eu" target="_new">Tilen Majerle</a>. All rights reserved.

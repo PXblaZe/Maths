@@ -6,5 +6,5 @@ digraph "Graphical Class Hierarchy"
   rankdir="LR";
   Node1 [label="__gnu_cxx::__normal\l_iterator",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node0 [label="Integer\< BITS \>::iterator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classInteger_1_1iterator.html",tooltip=" "];
+  Node0 [label="Integer\< BITS, __unsigned\l__ \>::iterator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classInteger_1_1iterator.html",tooltip=" "];
 }

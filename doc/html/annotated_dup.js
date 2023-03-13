@@ -5,7 +5,7 @@ var annotated_dup =
       [ "Derivative", "classCalculus_1_1Derivative.html", null ],
       [ "Integral", "classCalculus_1_1Integral.html", null ]
     ] ],
-    [ "FloatingPoint", "classFloatingPoint.html", null ],
+    [ "FloatingPoint", "classFloatingPoint.html", "classFloatingPoint" ],
     [ "FnClsGtr", "classFnClsGtr.html", null ],
     [ "FnClsGtr< R(Param...)>", "classFnClsGtr_3_01R_07Param_8_8_8_08_4.html", "classFnClsGtr_3_01R_07Param_8_8_8_08_4" ],
     [ "Function", "classFunction.html", "classFunction" ],
